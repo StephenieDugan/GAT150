@@ -7,15 +7,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="ModelManager.h" />
-    <ClInclude Include="Font.h" />
     <ClInclude Include="Text.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="Font.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -37,6 +52,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

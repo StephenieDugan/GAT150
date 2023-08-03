@@ -23,16 +23,18 @@ namespace Twili
 		void drawPoint(int x, int y);
 		void drawLine(float x1, float y1, float x2, float y2);
 		void drawPoint(float x, float y);
+		void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
 
 		int getWidth() const { return m_width; };
 		int getHeight() const { return m_height; };
-
+		SDL_Renderer* m_renderer = nullptr;
+		friend class Texture;
 		friend class Text;
 	private:
 		int m_width = 0;
 		int m_height = 0;
 
-		SDL_Renderer* m_renderer = nullptr;
+		
 		SDL_Window* m_window = nullptr;
 
 	};

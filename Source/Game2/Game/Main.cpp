@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+#include <array>
 #include "Renderer\Renderer.h"
 #include "Renderer\ModelManager.h"
 #include "Input\InputSystem.h"
@@ -9,6 +10,7 @@
 #include "Core\Core.h"
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
+#include "Renderer/Texture.h"
 #include "Renderer/ParticleSystem.h"
 #include "Player.h"
 #include "Enemy.h"
@@ -36,8 +38,9 @@ public:
 };
 
 
-
 int main(int argc, char* argv[]) {
+
+	INFO_LOG("hello World");
 
 	Twili::MemoryTracker::Initialize();
 	
@@ -74,7 +77,8 @@ int main(int argc, char* argv[]) {
 	constexpr float turnRate = Twili::degreesToRadians(180);
 	float speed = 150;
 
-	
+	shared_ptr<Twili::Texture> texture = make_shared<Twili::Texture>();
+	texture->Load( "CelestialObjects.png",Twili::g_rend);
 
 	//main game code
 		bool quit = false;
@@ -135,7 +139,7 @@ int main(int argc, char* argv[]) {
 		{
 			star.Update(Twili::g_rend.getWidth(), Twili::g_rend.getHeight());
 
-			star.m_pos.x + 1;
+			star.m_pos.x += 1;
 			star.m_pos.y += 0.3f;
 
 			if (star.m_pos.x >= Twili::g_rend.getWidth()) star.m_pos.x = 0;
@@ -148,6 +152,7 @@ int main(int argc, char* argv[]) {
 		}
 		game->Draw(Twili::g_rend);
 		Twili::g_ParticleSystem.Draw(Twili::g_rend);
+		Twili::g_rend.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 		//model.draw(Twili::g_rend, transform.position,transform.rotation,transform.scale);
 
 

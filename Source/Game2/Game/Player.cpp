@@ -1,7 +1,7 @@
 #include "player.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
-#include "Game/Weapon.h"
+#include "Weapon.h"
 #include "Framework/Scene.h"
 #include "GAAAAME.h"
 void Player::Update(float dt)

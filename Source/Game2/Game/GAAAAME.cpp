@@ -108,7 +108,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
+                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
                 powerup->m_tag = "PowerUp";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -145,7 +145,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
+                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
                 powerup->m_tag = "PowerUp2";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -156,7 +156,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
+                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
                 powerup->m_tag = "PowerUp";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -242,7 +242,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
+                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
                 powerup->m_tag = "PowerUp2";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -253,7 +253,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
+                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
                 powerup->m_tag = "PowerUp";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));

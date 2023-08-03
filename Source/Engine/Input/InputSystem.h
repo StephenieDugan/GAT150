@@ -1,4 +1,3 @@
-#pragma once
 #include "Core/Vector2.h"
 #include <SDL2-2.28.0/include/SDL.h>
 #include <vector>

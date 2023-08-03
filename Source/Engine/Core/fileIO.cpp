@@ -1,6 +1,8 @@
 #include "fileIO.h"
+#include "Logger.h"
 #include <filesystem>
 #include <fstream>
+#include <iostream>
 
 namespace Twili {
     std::string getFilePath()
@@ -14,6 +16,11 @@ namespace Twili {
             std::filesystem::current_path(path,ec);
             return ec.value() ==0;
         }
+
+    std::string getFileName(const std::filesystem::path& path)
+    {
+        return path.filename().string();
+    }
 
         bool fileExists(const std::filesystem::path & path)
         {
@@ -29,7 +36,12 @@ namespace Twili {
 
         bool readFile(const std::filesystem::path & path, std::string & buffer)
         {
-            if (!fileExists(path)) return false;
+            if (!fileExists(path))
+            {
+                WARNING_LOG("file not loaded: " << path.string());
+                return false;
+
+            }
 
             size_t size;
             if (!getFileSize(path, size)) return false;
