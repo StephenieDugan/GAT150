@@ -8,7 +8,7 @@ namespace Twili
 	{
 		if (m_texture) SDL_DestroyTexture(m_texture);
 	}
-	bool Texture::Load( std::string filename, Renderer& renderer)
+	bool Texture::Load(const std::string& filename, Renderer& renderer)
 	{
 		SDL_Surface* surface = IMG_Load(filename.c_str());
 		if (!surface)
@@ -36,7 +36,16 @@ namespace Twili
 
 	bool Texture::Create(std::string filename, ...)
 	{
-		return false;
+		va_list args;
+
+		va_start(args, filename);
+
+		Renderer& renderer = va_arg(args, Renderer);
+
+		va_end(args);
+
+
+		return Load(filename,renderer);
 	}
 
 }

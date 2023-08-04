@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Core.h"
 #include "Renderer/Model.h"
+#include "FrameWork/Conponent/Conponents.h"
 #include <memory>
 namespace Twili
 {
@@ -10,8 +11,12 @@ namespace Twili
 		Actor() = default;
 		Actor(const Twili::Transform& transform) : m_transform{ transform } {}
 		Actor(const Twili::Transform& transform, std::shared_ptr<Model> model) : m_transform{ transform }, m_model{ model } {}
+		
+		
 		virtual void Update(float dt);
 		virtual void Draw(Twili::Renderer rend);
+
+		void AddComponent(std::unique_ptr<Conponent> component);
 
 		float getRadius() { return (m_model) ? m_model->getRadius() * m_transform.scale : 0; }
 		virtual void onCollision(Actor* other) {}
@@ -31,6 +36,7 @@ namespace Twili
 		bool m_destroyed = false;
 	protected:
 
+		std::vector<std::unique_ptr<class Conponent>> m_components;
 		
 		std::shared_ptr<Model> m_model;
 

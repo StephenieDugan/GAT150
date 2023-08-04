@@ -13,7 +13,7 @@ namespace Twili
 		
 		virtual bool Create(std::string filename, ...) override;
 
-		bool Load(std::string filename,class Renderer& renderer);
+		bool Load(const std::string& filename,class Renderer& renderer);
 		vec2 GetSize();
 
 		friend class Renderer;

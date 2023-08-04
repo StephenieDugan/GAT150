@@ -3,6 +3,8 @@
 #include "Enemy.h"
 
 #include "FrameWork/Scene.h"
+#include "FrameWork/Resource/Resource.h"
+#include "FrameWork/ResourceManager.h"
 
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
@@ -14,7 +16,7 @@
 bool GAAAAME::Init()
 {
     //Create Font/text Objects
-    font = std::make_shared<Twili::Font>("arcadeclassic.ttf", 24);
+    font = Twili::g_resMan.Get<Twili::Font>("arcadeclassic.ttf", 24);
     font2 = std::make_shared<Twili::Font>("ThaleahFat.ttf", 80);
 
     m_Scoretext = std::make_unique<Twili::Text>(font);

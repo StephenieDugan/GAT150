@@ -7,6 +7,7 @@
 #include "Audio\AudioSystem.h"
 #include "Framework/Scene.h"
 #include "FrameWork/Emitter.h"
+#include "FrameWork/ResourceManager.h"
 #include "Core\Core.h"
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
@@ -37,8 +38,10 @@ public:
 	Twili::Vector2 velocity;
 };
 
-
 int main(int argc, char* argv[]) {
+
+
+
 
 	INFO_LOG("hello World");
 
@@ -77,8 +80,7 @@ int main(int argc, char* argv[]) {
 	constexpr float turnRate = Twili::degreesToRadians(180);
 	float speed = 150;
 
-	shared_ptr<Twili::Texture> texture = make_shared<Twili::Texture>();
-	texture->Load( "CelestialObjects.png",Twili::g_rend);
+	Twili::res_t<Twili::Texture> texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png",Twili::g_rend);
 
 	//main game code
 		bool quit = false;
