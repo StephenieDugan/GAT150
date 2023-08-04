@@ -11,6 +11,7 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/Text.h"
 #include "Renderer/ModelManager.h"
+#include "FrameWork/Conponent/Sprite.h"
 
 
 bool GAAAAME::Init()
@@ -77,11 +78,19 @@ void GAAAAME::Update(float dt)
     case GAAAAME::eState::StartLevel:
         m_scene->RemoveAll();
         {
-
+            //create player
             std::unique_ptr<Player> player = std::make_unique<Player>(20.0f, Twili::pi, Twili::Transform{ {400, 300}, 0, 6 }, Twili::g_MM.get("ship.txt"));
             player->m_tag = "Player";
             player->m_game = this;
             player->setDamping(0.9f);
+
+
+            //create components
+            std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
+            component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
+            player->AddComponent(std::move(component));
+
+
             m_scene->Add(std::move(player));
         }
         m_state = eState::Level1;
@@ -95,6 +104,12 @@ void GAAAAME::Update(float dt)
             std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(Twili::randomF(75.0f, 150.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 6 }, Twili::g_MM.get("enemy.txt"));
             enemy->m_tag = "Enemy";
             enemy->m_game = this;
+
+            //create components
+            std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
+            component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
+            enemy->AddComponent(std::move(component));
+
             m_scene->Add(std::move(enemy));
         }
         if (m_score >= 600)
