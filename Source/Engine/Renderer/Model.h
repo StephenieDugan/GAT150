@@ -1,12 +1,13 @@
 #pragma once
 #include "Core/Core.h"
+#include "Framework/Resource/Resource.h"
 #include <vector>
 #include "Renderer.h"
 
 
 namespace Twili
 {
-class Model
+class Model : public Resource
 {
 public:
 
@@ -25,6 +26,10 @@ private:
 
 
 
+
+
+	// Inherited via Resource
+	virtual bool Create(std::string filename, ...) override;
 
 };
 

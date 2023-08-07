@@ -5,7 +5,7 @@
 struct SDL_Texture;
 namespace Twili
 {
-	class Texture : Resource
+	class Texture : public Resource
 	{
 	public:
 		Texture() = default;
