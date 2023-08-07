@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
 	constexpr float turnRate = Twili::degreesToRadians(180);
 	float speed = 150;
 
-	Twili::res_t<Twili::Texture> texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png",Twili::g_rend);
+	//Twili::res_t<Twili::Texture> texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png",Twili::g_rend);
 
 	//main game code
 		bool quit = false;
@@ -154,7 +154,7 @@ int main(int argc, char* argv[]) {
 		}
 		game->Draw(Twili::g_rend);
 		Twili::g_ParticleSystem.Draw(Twili::g_rend);
-		Twili::g_rend.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
+		//Twili::g_rend.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 		//model.draw(Twili::g_rend, transform.position,transform.rotation,transform.scale);
 
 

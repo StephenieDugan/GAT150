@@ -136,6 +136,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Conponent\EnginePhysicsComp.cpp" />
+    <ClCompile Include="Conponent\ModRendComp.cpp" />
     <ClCompile Include="Conponent\Sprite.cpp" />
     <ClCompile Include="Emitter.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
@@ -144,6 +146,9 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Conponent\Conponents.h" />
+    <ClInclude Include="Conponent\EnginePhysicsComp.h" />
+    <ClInclude Include="Conponent\ModRendComp.h" />
+    <ClInclude Include="Conponent\Physics.h" />
     <ClInclude Include="Conponent\RenderComponent.h" />
     <ClInclude Include="Conponent\Sprite.h" />
     <ClInclude Include="Emitter.h" />

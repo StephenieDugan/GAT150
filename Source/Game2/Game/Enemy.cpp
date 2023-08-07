@@ -38,7 +38,7 @@ void Enemy::Update(float dt)
 	{
 		m_fireTimer = m_fireRate;
 		Twili::Transform transform{ m_transform.position, m_transform.rotation};
-		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform, m_model);
+		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform);
 		weapon->m_tag = "EnemyFire";
 		m_scene->Add(std::move(weapon));
 		std::cout << "blep";
@@ -72,7 +72,7 @@ void Enemy::onCollision(Actor* other)
 				std::unique_ptr<Player> player = std::make_unique<Player>(20.0f, Twili::pi, Twili::Transform{ {400, 300}, 0, 4 }, Twili::g_MM.get("ship.txt"));
 				player->m_tag = "Player";
 				player->m_game = m_game;
-				player->setDamping(0.9f);
+				
 				m_scene->Add(std::move(player));
 			}
 			else if (this->m_tag == "Enemy3")

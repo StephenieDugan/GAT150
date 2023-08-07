@@ -3,8 +3,8 @@
 class Player : public Twili::Actor
 {
 public:
-	Player(float speed, float turnRate, const Twili::Transform& transform, std::shared_ptr<Twili::Model> model) :
-		Actor{ transform, model }, m_speed{ speed }, m_turnRate{turnRate} {};
+	Player(float speed, float turnRate, const Twili::Transform& transform) :
+		Actor{ transform }, m_speed{ speed }, m_turnRate{turnRate} {};
 
 	void Update(float dt) override;
 	virtual void onCollision(Actor* actor) override;

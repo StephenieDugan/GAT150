@@ -5,6 +5,7 @@
 #include "FrameWork/Scene.h"
 #include "FrameWork/Resource/Resource.h"
 #include "FrameWork/ResourceManager.h"
+#include "FrameWork/Conponent/EnginePhysicsComp.h"
 
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
@@ -79,16 +80,19 @@ void GAAAAME::Update(float dt)
         m_scene->RemoveAll();
         {
             //create player
-            std::unique_ptr<Player> player = std::make_unique<Player>(20.0f, Twili::pi, Twili::Transform{ {400, 300}, 0, 6 }, Twili::g_MM.get("ship.txt"));
+           auto player = std::make_unique<Player>(20.0f, Twili::pi, Twili::Transform{ {400, 300}, 0, 6 });
             player->m_tag = "Player";
             player->m_game = this;
-            player->setDamping(0.9f);
-
 
             //create components
-            std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
+          auto component = std::make_unique<Twili::Sprite>();
             component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
             player->AddComponent(std::move(component));
+
+            //add physics
+            auto physicsComponent = std::make_unique<Twili::EnginePhysicsComp>();
+            physicsComponent->m_damping = 0.8;
+            player->AddComponent(std::move(physicsComponent));
 
 
             m_scene->Add(std::move(player));
@@ -101,12 +105,12 @@ void GAAAAME::Update(float dt)
         if (m_spawn_timer >= m_spawnTime)
         {
             m_spawn_timer = 0;
-            std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(Twili::randomF(75.0f, 150.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 6 }, Twili::g_MM.get("enemy.txt"));
+            auto enemy = std::make_unique<Enemy>(Twili::randomF(75.0f, 150.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 6 });
             enemy->m_tag = "Enemy";
             enemy->m_game = this;
 
             //create components
-            std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
+           auto component = std::make_unique<Twili::Sprite>();
             component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
             enemy->AddComponent(std::move(component));
 
@@ -125,7 +129,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
+               auto powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
                 powerup->m_tag = "PowerUp";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -136,12 +140,12 @@ void GAAAAME::Update(float dt)
         {
             m_spawn_timer = 0;
             for (int i = 0; i < 2; i++) {
-                std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 }, Twili::g_MM.get("enemy.txt"));
+               auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 }, Twili::g_MM.get("enemy.txt"));
                 enemy->m_tag = "Enemy";
                 enemy->m_game = this;
                 m_scene->Add(std::move(enemy));
             }
-            std::unique_ptr<Enemy> enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy2.txt"));
+           auto enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy2.txt"));
             enemy2->m_tag = "Enemy2";
             enemy2->m_health = 50.0f;
             enemy2->m_game = this;
@@ -162,7 +166,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
+                auto powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
                 powerup->m_tag = "PowerUp2";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -173,7 +177,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
+                auto powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
                 powerup->m_tag = "PowerUp";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -186,20 +190,20 @@ void GAAAAME::Update(float dt)
             m_spawn_timer = 0;
 
             for (int i = 0; i < 4; i++) {
-                std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 }, Twili::g_MM.get("enemy.txt"));
+                auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 }, Twili::g_MM.get("enemy.txt"));
                 enemy->m_tag = "Enemy";
                 enemy->m_game = this;
                 m_scene->Add(std::move(enemy));
             }
             for (int i = 0; i < 4; i++) {
-                std::unique_ptr<Enemy> enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 12 }, Twili::g_MM.get("enemy2.txt"));
+               auto enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 12 }, Twili::g_MM.get("enemy2.txt"));
                 enemy2->m_tag = "Enemy2";
                 enemy2->m_health = 50.0f;
                 enemy2->m_game = this;
 
                 m_scene->Add(std::move(enemy2));
             }
-            std::unique_ptr<Enemy> enemy3 = std::make_unique<Enemy>(Twili::randomF(35.0f, 95.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 16 }, Twili::g_MM.get("enemy2.txt"));
+           auto enemy3 = std::make_unique<Enemy>(Twili::randomF(35.0f, 95.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 16 }, Twili::g_MM.get("enemy2.txt"));
             enemy3->m_tag = "Enemy3";
             enemy3->m_health = 130.0f;
             enemy3->m_game = this;
@@ -219,26 +223,26 @@ void GAAAAME::Update(float dt)
             m_spawn_timer = 0;
 
             for (int i = 0; i < 6; i++) {
-                std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 4 }, Twili::g_MM.get("enemy.txt"));
+               auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 4 }, Twili::g_MM.get("enemy.txt"));
                 enemy->m_tag = "Enemy";
                 enemy->m_game = this;
                 m_scene->Add(std::move(enemy));
             }
             for (int i = 0; i < 2; i++) {
-                std::unique_ptr<Enemy> enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy2.txt"));
+                auto enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy2.txt"));
                 enemy2->m_tag = "Enemy2";
                 enemy2->m_health = 100.0f;
                 enemy2->m_game = this;
 
                 m_scene->Add(std::move(enemy2));
             }
-            std::unique_ptr<Enemy> enemy3 = std::make_unique<Enemy>(Twili::randomF(35.0f, 95.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 13 }, Twili::g_MM.get("enemy2.txt"));
+            auto enemy3 = std::make_unique<Enemy>(Twili::randomF(35.0f, 95.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 13 }, Twili::g_MM.get("enemy2.txt"));
             enemy3->m_tag = "Enemy3";
             enemy3->m_health = 160.0f;
             enemy3->m_game = this;
             m_scene->Add(std::move(enemy3));
 
-            std::unique_ptr<Enemy> enemy4 = std::make_unique<Enemy>(Twili::randomF(25.0f, 80.0f), Twili::pi2, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy4.txt"));
+           auto enemy4 = std::make_unique<Enemy>(Twili::randomF(25.0f, 80.0f), Twili::pi2, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy4.txt"));
             enemy4->m_tag = "Enemy3";
             enemy4->m_health = 180.0f;
             enemy4->m_game = this;
@@ -259,7 +263,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
+               auto powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 4}, Twili::g_MM.get("WeaponUpgrade2.txt"));
                 powerup->m_tag = "PowerUp2";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -270,7 +274,7 @@ void GAAAAME::Update(float dt)
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
             {
-                std::unique_ptr<Player> powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
+                auto powerup = std::make_unique<Player>(0.0f, 0.0f, Twili::Transform{ {Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())}, 0, 3}, Twili::g_MM.get("WeaponUpgrade.txt"));
                 powerup->m_tag = "PowerUp";
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
@@ -281,12 +285,12 @@ void GAAAAME::Update(float dt)
         {
             m_spawn_timer = 0;
             for (int i = 0; i < 6; i++) {
-                std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 }, Twili::g_MM.get("enemy.txt"));
+               auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 }, Twili::g_MM.get("enemy.txt"));
                 enemy->m_tag = "Enemy";
                 enemy->m_game = this;
                 m_scene->Add(std::move(enemy));
             }
-            std::unique_ptr<Enemy> enemy5 = std::make_unique<Enemy>(Twili::randomF(15.0f, 50.0f), Twili::pi, Twili::Transform{ {800, 200}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy5.txt"));
+            auto enemy5 = std::make_unique<Enemy>(Twili::randomF(15.0f, 50.0f), Twili::pi, Twili::Transform{ {800, 200}, Twili::randomF(Twili::pi2), 10 }, Twili::g_MM.get("enemy5.txt"));
             enemy5->m_tag = "Enemy5";
             enemy5->m_health = 700.0f;
             enemy5->m_game = this;

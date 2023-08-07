@@ -9,21 +9,19 @@ namespace Twili
 	{
 	public:
 		Actor() = default;
-		Actor(const Twili::Transform& transform) : m_transform{ transform } {}
-		Actor(const Twili::Transform& transform, std::shared_ptr<Model> model) : m_transform{ transform }, m_model{ model } {}
-		
+		Actor(const Twili::Transform& transform) : 
+			m_transform{ transform } 
+		{}
 		
 		virtual void Update(float dt);
 		virtual void Draw(Twili::Renderer rend);
 
 		void AddComponent(std::unique_ptr<Conponent> component);
+		template<typename T>
+		T* getComponent();
 
-		float getRadius() { return (m_model) ? m_model->getRadius() * m_transform.scale : 0; }
+		float getRadius() { return 30.0f; }
 		virtual void onCollision(Actor* other) {}
-
-
-		void addForce(const vec2& force) {	m_velocity += force; };
-		void setDamping(float damping) { m_damping = damping; };
 
 		class Scene* m_scene = nullptr;
 		friend class Scene;
@@ -38,11 +36,19 @@ namespace Twili
 
 		std::vector<std::unique_ptr<class Conponent>> m_components;
 		
-		std::shared_ptr<Model> m_model;
-
-		vec2 m_velocity;
-		float m_damping=0;
-
 	};
+
+	template<typename T>
+	inline T* Actor::getComponent()
+	{
+		for (auto& component : m_components)
+		{
+			T* result = dynamic_cast<T*> (component.get());
+
+			if (result)
+				return result;
+		}
+		return nullptr;
+	}
 
 }

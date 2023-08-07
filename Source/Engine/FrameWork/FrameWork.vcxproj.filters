@@ -28,6 +28,12 @@
     <ClCompile Include="Conponent\Sprite.cpp">
       <Filter>Source Files\Conponent</Filter>
     </ClCompile>
+    <ClCompile Include="Conponent\ModRendComp.cpp">
+      <Filter>Source Files\Conponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Conponent\EnginePhysicsComp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -55,6 +61,15 @@
       <Filter>Source Files\Conponent</Filter>
     </ClInclude>
     <ClInclude Include="Conponent\Sprite.h">
+      <Filter>Source Files\Conponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Conponent\ModRendComp.h">
+      <Filter>Source Files\Conponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Conponent\Physics.h">
+      <Filter>Source Files\Conponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Conponent\EnginePhysicsComp.h">
       <Filter>Source Files\Conponent</Filter>
     </ClInclude>
   </ItemGroup>

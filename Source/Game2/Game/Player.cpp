@@ -2,7 +2,10 @@
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
 #include "Weapon.h"
+#include "FrameWork/ResourceManager.h"
+#include "FrameWork/Conponent/Sprite.h"
 #include "Framework/Scene.h"
+#include "FrameWork/Conponent/Physics.h"
 #include "GAAAAME.h"
 void Player::Update(float dt)
 {
@@ -18,7 +21,8 @@ void Player::Update(float dt)
 
 	Twili::Vector2 forward = Twili::vec2(0, -1).Rotate(m_transform.rotation);
 
-	addForce(forward * m_speed * thrust);
+	auto physicsComponent = getComponent<Twili::Physics>();
+	physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	//m_transform.position += forward * m_speed * thrust * Twili::g_time.getDeltaTime();
 
@@ -31,8 +35,14 @@ void Player::Update(float dt)
 			!Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
 		{
 			Twili::Transform transform1{ m_transform.position, m_transform.rotation, 1};
-			std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform1, m_model);
+			std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform1);
 			weapon->m_tag = "PlayerFire";
+
+			//create components
+			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
+			component->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			weapon->AddComponent(std::move(component));
+
 			m_scene->Add(std::move(weapon));
 		}
 	}
@@ -41,13 +51,25 @@ void Player::Update(float dt)
 		if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_SPACE) && !Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_SPACE) && m_tag == "Player")
 		{
 			Twili::Transform transform1{ m_transform.position, m_transform.rotation + Twili::degreesToRadians(10.0f), 1};
-			std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform1, m_model);
+			std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform1);
 			weapon->m_tag = "PlayerFire";
+
+			//create components
+			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
+			component->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			weapon->AddComponent(std::move(component));
+
 			m_scene->Add(std::move(weapon));
 
 			Twili::Transform transform2{ m_transform.position, m_transform.rotation - Twili::degreesToRadians(10.0f), 1};
-			weapon = std::make_unique<Weapon>(400.0f, transform2, m_model);
+			weapon = std::make_unique<Weapon>(400.0f, transform2);
 			weapon->m_tag = "PlayerFire";
+
+			//create components
+			std::unique_ptr<Twili::Sprite> renderComponent = std::make_unique<Twili::Sprite>();
+		renderComponent->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			weapon->AddComponent(std::move(renderComponent));
+
 			m_scene->Add(std::move(weapon));
 		}
 	}
@@ -56,18 +78,36 @@ void Player::Update(float dt)
 		if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_SPACE) && !Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_SPACE) && m_tag == "Player")
 		{
 			Twili::Transform transform{ m_transform.position, m_transform.rotation, 1};
-			std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform, m_model);
+			std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform);
 			weapon->m_tag = "PlayerFire";
+
+			//create components
+			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
+			component->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			weapon->AddComponent(std::move(component));
+
 			m_scene->Add(std::move(weapon));
 
 			Twili::Transform transform1{ m_transform.position, m_transform.rotation + Twili::degreesToRadians(10.0f), 1};
-			weapon = std::make_unique<Weapon>(400.0f, transform1, m_model);
+			weapon = std::make_unique<Weapon>(400.0f, transform1);
 			weapon->m_tag = "PlayerFire";
+
+			//create components
+			std::unique_ptr<Twili::Sprite> renderComponent = std::make_unique<Twili::Sprite>();
+			renderComponent->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			weapon->AddComponent(std::move(renderComponent));
+
 			m_scene->Add(std::move(weapon));
 
 			Twili::Transform transform2{ m_transform.position, m_transform.rotation - Twili::degreesToRadians(10.0f), 1};
-			weapon = std::make_unique<Weapon>(400.0f, transform2, m_model);
+			weapon = std::make_unique<Weapon>(400.0f, transform2);
 			weapon->m_tag = "PlayerFire";
+
+			//create components
+			std::unique_ptr<Twili::Sprite> renderComponent2 = std::make_unique<Twili::Sprite>();
+			renderComponent2->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			weapon->AddComponent(std::move(renderComponent2));
+
 			m_scene->Add(std::move(weapon));
 		}
 	}
