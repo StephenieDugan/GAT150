@@ -1,5 +1,6 @@
 #include "Actor.h"
 #include "Conponent/RenderComponent.h"
+#include "Renderer/Renderer.h"
 
 namespace Twili {
 	void Actor::Update(float dt)

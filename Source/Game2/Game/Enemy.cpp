@@ -2,7 +2,7 @@
 #include "FrameWork/Scene.h"
 #include "player.h"
 #include "Weapon.h"
-#include "Renderer/ModelManager.h"
+
 #include "Audio/AudioSystem.h"
 #include "Renderer/Renderer.h"
 #include "GAAAAME.h"
@@ -69,7 +69,7 @@ void Enemy::onCollision(Actor* other)
 			{
 				m_game->AddPoints(500); m_destroyed = true;
 
-				std::unique_ptr<Player> player = std::make_unique<Player>(20.0f, Twili::pi, Twili::Transform{ {400, 300}, 0, 4 }, Twili::g_MM.get("ship.txt"));
+				std::unique_ptr<Player> player = std::make_unique<Player>(20.0f, Twili::pi, Twili::Transform{ {400, 300}, 0, 4 });
 				player->m_tag = "Player";
 				player->m_game = m_game;
 				

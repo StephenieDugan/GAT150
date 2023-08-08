@@ -1,7 +1,7 @@
 #pragma once
 #include "Core/Vector2.h"
 #include "Core/Color.h"
-#include "Renderer/Renderer.h"
+
 namespace Twili
 {
 	struct ParticleData
@@ -24,7 +24,7 @@ public:
 		m_isActive = true;
 	}
 	void Update(float dt);
-	void Draw(Renderer& renderer);
+	void Draw(class Renderer& renderer);
 	friend class ParticleSystem;
 private:
 	ParticleData m_data;

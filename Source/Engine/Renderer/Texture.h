@@ -2,7 +2,9 @@
 #include "Core/Vector2.h"
 #include "FrameWork/Resource/Resource.h"
 
+
 struct SDL_Texture;
+
 namespace Twili
 {
 	class Texture : public Resource

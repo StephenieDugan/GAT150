@@ -2,11 +2,11 @@
 #include "Core/Core.h"
 #include "Framework/Resource/Resource.h"
 #include <vector>
-#include "Renderer.h"
-
 
 namespace Twili
 {
+	class Renderer;
+
 class Model : public Resource
 {
 public:

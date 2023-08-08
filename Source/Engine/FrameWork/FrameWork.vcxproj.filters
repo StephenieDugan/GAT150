@@ -72,5 +72,8 @@
     <ClInclude Include="Conponent\EnginePhysicsComp.h">
       <Filter>Source Files\Conponent</Filter>
     </ClInclude>
+    <ClInclude Include="FrameWork.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,23 +1,23 @@
 #include <iostream>
 #include <chrono>
 #include <array>
+#include <vector>
+#include <thread>
+
 #include "Renderer\Renderer.h"
-#include "Renderer\ModelManager.h"
+
 #include "Input\InputSystem.h"
+
 #include "Audio\AudioSystem.h"
-#include "Framework/Scene.h"
-#include "FrameWork/Emitter.h"
-#include "FrameWork/ResourceManager.h"
+
+#include "Framework/FrameWork.h"
+
 #include "Core\Core.h"
-#include "Renderer/Font.h"
-#include "Renderer/Text.h"
-#include "Renderer/Texture.h"
-#include "Renderer/ParticleSystem.h"
+
 #include "Player.h"
 #include "Enemy.h"
 #include "GAAAAME.h"
-#include <vector>
-#include <thread>
+
 using namespace std;
 
 class Star
@@ -41,9 +41,7 @@ public:
 int main(int argc, char* argv[]) {
 
 
-
-
-	INFO_LOG("hello World");
+	INFO_LOG("INITIALLIZE ENGINE.........");
 
 	Twili::MemoryTracker::Initialize();
 	

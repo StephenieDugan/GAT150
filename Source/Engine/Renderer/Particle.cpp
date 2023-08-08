@@ -1,5 +1,6 @@
 #include "Particle.h"
 #include "Core/Color.h"
+#include "Renderer.h"
 namespace Twili
 {
 	void Particle::Update(float dt)

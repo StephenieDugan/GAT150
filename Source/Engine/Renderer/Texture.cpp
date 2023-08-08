@@ -30,7 +30,7 @@ namespace Twili
 		// ASSERT texture is not null
 		SDL_Point point;
 		// https://wiki.libsdl.org/SDL2/SDL_QueryTexture<get point.x and point.y, use link above>
-		SDL_QueryTexture(m_texture, NULL, NULL, &point.x, &point.y);
+		SDL_QueryTexture(m_texture, nullptr, nullptr, &point.x, &point.y);
 		return vec2{ point.x, point.y };
 	}
 
