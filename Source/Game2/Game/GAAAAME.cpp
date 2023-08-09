@@ -14,7 +14,7 @@ bool GAAAAME::Init()
 {
     //Create Font/text Objects
     font = Twili::g_resMan.Get<Twili::Font>("arcadeclassic.ttf", 24);
-    font2 = std::make_shared<Twili::Font>("ThaleahFat.ttf", 80);
+    font2 = Twili::g_resMan.Get<Twili::Font>("ThaleahFat.ttf", 80);
 
     m_Scoretext = std::make_unique<Twili::Text>(font);
     m_Scoretext->Create(Twili::g_rend, "Score 0000", Twili::Color{ 1, 0, 1, 1 });
@@ -27,12 +27,16 @@ bool GAAAAME::Init()
 
     m_Level1text = std::make_unique<Twili::Text>(font);
     m_Level1text->Create(Twili::g_rend, "Level 1", Twili::Color{ 1, 1, 1, 1 });
+
     m_Level2text = std::make_unique<Twili::Text>(font);
     m_Level2text->Create(Twili::g_rend, "Level 2", Twili::Color{ 1, 1, 1, 1 });
+
     m_Level3text = std::make_unique<Twili::Text>(font);
     m_Level3text->Create(Twili::g_rend, "Level 3", Twili::Color{ 1, 1, 1, 1 });
+
     m_Level4text = std::make_unique<Twili::Text>(font);
     m_Level4text->Create(Twili::g_rend, "Level 4", Twili::Color{ 1, 1, 1, 1 });
+
     m_Level5text = std::make_unique<Twili::Text>(font);
     m_Level5text->Create(Twili::g_rend, "Level 5", Twili::Color{ 1, 1, 1, 1 });
 
@@ -80,8 +84,8 @@ void GAAAAME::Update(float dt)
             player->m_game = this;
 
             //create components
-          auto component = std::make_unique<Twili::Sprite>();
-            component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
+          auto component = std::make_unique<Twili::ModRendComp>();
+            component->m_model = Twili::g_resMan.Get<Twili::Model>("ship.txt");
             player->AddComponent(std::move(component));
 
             //add physics

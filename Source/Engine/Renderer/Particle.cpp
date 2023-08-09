@@ -1,5 +1,5 @@
 #include "Particle.h"
-#include "Core/Color.h"
+#include "Core/Math/Color.h"
 #include "Renderer.h"
 namespace Twili
 {

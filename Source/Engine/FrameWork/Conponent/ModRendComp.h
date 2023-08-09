@@ -9,10 +9,10 @@ namespace Twili
 	{
 	public:
 		void Update(float dt);
-		void Draw(Renderer& rend);
+		void Draw(class Renderer& rend) override;
 
-	private:
-
+	public:
+		res_t<Model> m_model;
 
 	};
 }
