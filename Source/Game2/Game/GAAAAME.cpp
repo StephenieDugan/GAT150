@@ -84,8 +84,8 @@ void GAAAAME::Update(float dt)
             player->m_game = this;
 
             //create components
-          auto component = std::make_unique<Twili::ModRendComp>();
-            component->m_model = Twili::g_resMan.Get<Twili::Model>("ship.txt");
+          auto component = std::make_unique<Twili::Sprite>();
+            component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
             player->AddComponent(std::move(component));
 
             //add physics
