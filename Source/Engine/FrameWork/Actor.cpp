@@ -24,9 +24,10 @@ namespace Twili {
 
 		for (auto& component : m_components)
 		{
-			if (dynamic_cast<RenderComponent*>(component.get()))
+			RenderComponent* boop = dynamic_cast<RenderComponent*>(component.get());
+			if (boop)
 			{
-				dynamic_cast<RenderComponent*>(component.get())->Draw(rend);
+				boop->Draw(rend);
 			}
 		}
 

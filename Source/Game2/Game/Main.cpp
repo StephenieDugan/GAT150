@@ -44,12 +44,42 @@ int main(int argc, char* argv[]) {
 	INFO_LOG("INITIALLIZE ENGINE.........");
 
 	Twili::MemoryTracker::Initialize();
-	
+
 	Twili::seedRandom((unsigned)time(nullptr));
 	Twili::setFilePath("assets");
 
+	rapidjson::Document document;
+	Twili::Json::Load("json.txt", document);
+	
+	int i1;
+	Twili::Json::Read(document, "integer1", i1);
+	std::cout << i1 << std::endl;
+	int i2;
+	Twili::Json::Read(document, "integer2", i2);
+	std::cout << i2 << std::endl;
+
+	std::string str;
+	//<read string>
+	Twili::Json::Read(document, "string", str);
+		std::cout << str << std::endl;
+
+	bool b;
+	//<read boolean>
+	Twili::Json::Read(document, "boolean", b);
+		std::cout << b << std::endl;
+
+	float f;
+	//<read float>
+	Twili::Json::Read(document, "float", f);
+		std::cout << f << std::endl;
+
+	Twili::vec2 v2;
+	//<read vector2>
+	Twili::Json::Read(document, "vector2", v2);
+		std::cout << v2 << std::endl;
+
 	Twili::g_rend.Init();
-	Twili::g_rend.CreateWindow("CSC196", 800, 600);
+		Twili::g_rend.CreateWindow("CSC196", 800, 600);
 
 	//Input System
 	Twili::g_inputSys.Initialize();
