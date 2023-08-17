@@ -1,0 +1,34 @@
+
+
+Object.cpp
+#include "Object.h"
+
+
+namespace Twili
+{
+bool Object::Read(const rapidjson::Value& value)
+{
+READ_DATA(value, name);
+
+return true;
+
+}
+}
+
+
+
+CircleCollisionComp.cpp
+Add Class Declaration from Sprite.cpp into CircleCollisionComp
+
+EnginePhysicsComp.h
+Add Class Declaration from Sprite.cpp into EnginePhysicsComp
+
+EnginePhysicsComp.cpp
+Add Class Definition from Sprite.cpp into EnginePhysicsComp
+
+
+Physics.h
+Add Class Declaration from Sprite.cpp into PhysicsComp
+
+Weapon.h
+make child of Conponent

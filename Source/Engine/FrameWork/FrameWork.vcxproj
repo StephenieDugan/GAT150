@@ -136,15 +136,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="CircleCollisionComp.cpp" />
     <ClCompile Include="Conponent\EnginePhysicsComp.cpp" />
     <ClCompile Include="Conponent\ModRendComp.cpp" />
     <ClCompile Include="Conponent\Sprite.cpp" />
     <ClCompile Include="Emitter.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="CircleCollisionComp.h" />
+    <ClInclude Include="CollisionComp.h" />
     <ClInclude Include="Conponent\Conponents.h" />
     <ClInclude Include="Conponent\EnginePhysicsComp.h" />
     <ClInclude Include="Conponent\ModRendComp.h" />
@@ -152,11 +154,14 @@
     <ClInclude Include="Conponent\RenderComponent.h" />
     <ClInclude Include="Conponent\Sprite.h" />
     <ClInclude Include="Emitter.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="FrameWork.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Resource\Resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

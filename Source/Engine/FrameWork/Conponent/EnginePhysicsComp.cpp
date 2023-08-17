@@ -15,5 +15,9 @@ void EnginePhysicsComp::ApplyForce(const vec2& force)
 
 
 }
+void EnginePhysicsComp::Read(const json_t& value)
+{
+	//
+}
 }
 

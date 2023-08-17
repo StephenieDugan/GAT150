@@ -5,6 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source\Resources">
+      <UniqueIdentifier>{4e351f4a-5c26-47ff-bb39-61a3faf9e374}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAAAAME.h">
@@ -36,5 +39,10 @@
     <ClCompile Include="GAAAAME.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\Build\Assets\Resources.json">
+      <Filter>Source\Resources</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -11,12 +11,17 @@ namespace Twili
     public:
         Scene() = default;
 
+        bool Init();
         void Update(float dt);
         void Draw(Renderer& renderer);
 
         void Add(std::unique_ptr<Actor> actor);
         void Remove(Actor* actor);
         void RemoveAll();
+
+        bool Load(const std::string& filename);
+        void Read(const json_t& value);
+
 
         template<typename T>
         T* getActor();

@@ -12,6 +12,11 @@
 #include "Conponent/RenderComponent.h"
 #include "Conponent/Sprite.h"
 
+#include "CollisionComp.h"
+#include "CircleCollisionComp.h"
+
 #include "Resource/Resource.h"
 #include "ResourceManager.h"
+
+#include "Factory.h"
 

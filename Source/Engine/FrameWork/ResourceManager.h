@@ -1,12 +1,15 @@
 #pragma once
 #include "FrameWork/Resource/Resource.h"
+#include "FrameWork/Singleton.h"
 #include <map>
 #include <memory>
 #include <string>
 
+#define GET_RESOURCE(type, filename, ...) Twili::ResourceManager::Instance().Get<type>(filename, __VA_ARGS__);
+
 namespace Twili
 {
-	class ResourceManager
+	class ResourceManager : public Singleton<ResourceManager>
 	{
 	public:
 		template <typename T, typename ... TArgs>
@@ -33,6 +36,4 @@ namespace Twili
 
 		return resource;
 	}
-
-	extern ResourceManager g_resMan;
 }

@@ -3,6 +3,9 @@
 #include <string>
 #include "Core/Math/Vector2.h"
 
+#define READ_DATA(value, data) Twili::Json::Read(value, #data, data);
+#define READ_DATA_REQUIRED(value, data) Twili::Json::Read(value, #data, data, true);
+
 namespace Twili
 {
 	class Json

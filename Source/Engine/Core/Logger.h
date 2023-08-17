@@ -33,7 +33,7 @@ namespace Twili
 	public:
 		Logger(std::ostream* ostream, LogLevel logLevel, const std::string& filename = "") : m_ostream{ ostream }, m_LogLevel{ logLevel } { if (!filename.empty()) m_fstream.open(filename); };
 
-		bool Log(LogLevel loglevel, const std::string filename, int line);
+		bool Log(LogLevel loglevel, const std::string& filename, int line);
 
 		template<typename T>
 		Logger& operator << (T value);

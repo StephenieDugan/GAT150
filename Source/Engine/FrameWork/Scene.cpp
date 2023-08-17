@@ -1,8 +1,19 @@
 #include "Scene.h"
 #include "Renderer/Renderer.h"
+#include "FrameWork/CollisionComp.h"
 
 namespace Twili
 {
+    bool Scene::Init()
+    {
+        for (auto& actor : m_actors)
+        {
+            actor->Init();
+        }
+
+
+        return true;
+    }
     void Scene::Update(float dt)
     {
             //update and removed destroyed actors
@@ -22,9 +33,16 @@ namespace Twili
            {
                for (auto iter2 = std::next(iter1,1); iter2 != m_actors.end(); iter2++)
                {
-                   float distance = (*iter1)->m_transform.position.distance((*iter2)->m_transform.position);
-                   float radius = (*iter1)->getRadius() + (*iter2)->getRadius();
-                   if (distance <= radius)
+                   CollisionComp* collision1 = (*iter1)->getComponent<CollisionComp>();
+                   CollisionComp* collision2 = (*iter2)->getComponent<CollisionComp>();
+
+
+                   if (!collision1 == nullptr || !collision2 == nullptr)
+                   {
+                       continue;
+                    }
+
+                   if (collision1->CheckCollision(collision2))
                    {
                        (*iter1)->onCollision(iter2->get());
                        (*iter2)->onCollision(iter1->get());
@@ -58,6 +76,36 @@ namespace Twili
     void Scene::RemoveAll()
     {
         m_actors.clear();
+    }
+
+    bool Scene::Load(const std::string& filename)
+    {
+        rapidjson::Document document;
+        if (!Json::Load(filename, document))
+        {
+            ERROR_LOG("Could not load scene file: " << filename);
+            return false;
+        }
+        Read(document);
+        return true;        
+    }
+
+    void Scene::Read(const json_t& value)
+    {
+        //copy from Actor.cpp read
+        if (HAS_DATA(value, actors) && GET_DATA(value, actors).isArray())
+        {
+            for (auto& actorValue : GET_DATA(value, actors).GetArray())
+            {
+                std::string type;
+                READ_DATA(actorValue, type);
+
+                auto actor = CREATE_CLASS_BASE(Conponent, type);
+                actor->Read(actorvalue);
+
+
+            }
+        }
     }
 
 }

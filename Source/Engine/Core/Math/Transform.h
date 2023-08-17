@@ -16,6 +16,8 @@ namespace Twili
 		Transform() = default;
 		Transform(const vec2 postion, float rotation, float scale = 1) : position{ postion }, rotation{ rotation }, scale{ scale } {};
 
+		void Read(const json_t& value);
+
 		mat3 Getmatrix() const
 		{
 			mat3 ms = mat3::CreateScale(scale);

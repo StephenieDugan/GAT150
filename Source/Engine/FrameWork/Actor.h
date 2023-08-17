@@ -1,17 +1,24 @@
 #pragma once
+#include "Object.h"
 #include "Core/Core.h"
 #include "Renderer/Model.h"
-#include "FrameWork/Conponent/Conponents.h"
+#include "Conponent/Conponents.h"
 #include <memory>
+
 namespace Twili
 {
-	class Actor
+	class Actor : public Object
 	{
 	public:
+		CLASS_DECLARATION(Actor);
+
 		Actor() = default;
 		Actor(const Twili::Transform& transform) : 
 			m_transform{ transform } 
 		{}
+
+		virtual bool Init() override;
+		virtual void OnDestroy() override;
 		
 		virtual void Update(float dt);
 		virtual void Draw(Twili::Renderer rend);
@@ -32,6 +39,7 @@ namespace Twili
 		std::string m_tag;
 		float m_lifespan = -1.0f;
 		bool m_destroyed = false;
+
 	protected:
 
 		std::vector<std::unique_ptr<class Conponent>> m_components;

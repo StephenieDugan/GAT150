@@ -1,5 +1,23 @@
 #include "Weapon.h"
 #include "Renderer/Renderer.h"
+#include "FrameWork/FrameWork.h"
+
+bool Weapon::Init()
+{
+    auto collisionComp = getComponent<Twili::CollisionComp>();
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 void Weapon::Update(float dt)
 {
@@ -18,3 +36,5 @@ void Weapon::onCollision(Actor* other)
         m_destroyed = true;
    }
 }
+
+void Weapon::Read()

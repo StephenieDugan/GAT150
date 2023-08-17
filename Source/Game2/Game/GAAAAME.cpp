@@ -12,9 +12,10 @@
 
 bool GAAAAME::Init()
 {
+   
     //Create Font/text Objects
-    font = Twili::g_resMan.Get<Twili::Font>("arcadeclassic.ttf", 24);
-    font2 = Twili::g_resMan.Get<Twili::Font>("ThaleahFat.ttf", 80);
+    font = GET_RESOURCE(Twili::Font,"arcadeclassic.ttf", 24);
+    font2 = GET_RESOURCE(Twili::Font,"ThaleahFat.ttf", 80);
 
     m_Scoretext = std::make_unique<Twili::Text>(font);
     m_Scoretext->Create(Twili::g_rend, "Score 0000", Twili::Color{ 1, 0, 1, 1 });
@@ -51,6 +52,8 @@ bool GAAAAME::Init()
 
 
     m_scene = std::make_unique<Twili::Scene>();
+    m_scene->Load("scene.json");
+    m_scene->Init();
 
 	return true;
 }
@@ -84,16 +87,18 @@ void GAAAAME::Update(float dt)
             player->m_game = this;
 
             //create components
-          auto component = std::make_unique<Twili::Sprite>();
-            component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
+            auto component = CREATE_CLASS(Sprite) //std::make_unique<Twili::Sprite>();
+            component->m_texture = GET_RESOURCE(Twili::Texture,"CelestialObjects.png", Twili::g_rend);
             player->AddComponent(std::move(component));
 
+            auto collisionComp = CREATE_CLASS(CircleCollisionComp);
+
             //add physics
-            auto physicsComponent = std::make_unique<Twili::EnginePhysicsComp>();
+            auto physicsComponent = CREATE_CLASS(EnginePhysicsComp);
             physicsComponent->m_damping = 0.8;
             player->AddComponent(std::move(physicsComponent));
 
-
+            player->Init();
             m_scene->Add(std::move(player));
         }
         m_state = eState::Level1;
@@ -110,7 +115,7 @@ void GAAAAME::Update(float dt)
 
             //create components
            auto component = std::make_unique<Twili::Sprite>();
-            component->m_texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png", Twili::g_rend);
+            component->m_texture = GET_RESOURCE(Twili::Texture,"CelestialObjects.png", Twili::g_rend);
             enemy->AddComponent(std::move(component));
 
             m_scene->Add(std::move(enemy));
@@ -353,7 +358,9 @@ void GAAAAME::Update(float dt)
 }
 
 void GAAAAME::Draw(Twili::Renderer& r)
-{
+{  
+    m_scene->Draw(r);
+
     if (m_state == eState::Title)
     {
         m_Titletext->Draw(r, 250, 300);
@@ -397,5 +404,5 @@ void GAAAAME::Draw(Twili::Renderer& r)
         m_Winnertext->Draw(r, 250, 300);
     }
 
-    m_scene->Draw(r);
+   
 }

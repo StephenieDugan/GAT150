@@ -22,6 +22,7 @@ namespace Twili
 		clock_rep GetElapsedMicroseconds();
 		clock_rep GetElapsedMilliseconds();
 		float GetElapsedSeconds();
+
 		float getTime()const { return m_time; };
 		float getDeltaTime() const { return m_deltaTime * m_timeScale; };
 		float getUnscaledDeltaTime() const { return m_deltaTime; };

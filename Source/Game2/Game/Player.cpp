@@ -1,12 +1,26 @@
 #include "player.h"
+#include "Weapon.h"
+#include "GAAAAME.h"
+
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
-#include "Weapon.h"
-#include "FrameWork/ResourceManager.h"
-#include "FrameWork/Conponent/Sprite.h"
-#include "Framework/Scene.h"
-#include "FrameWork/Conponent/Physics.h"
-#include "GAAAAME.h"
+#include "FrameWork/FrameWork.h"
+
+bool Player::Init()
+{
+	Actor::Init();
+
+	m_physComp = getComponent<Twili::Physics>();
+	auto collisionComp = getComponent<Twili::Physics>();
+	if (collisionComp)
+	{
+		auto renderComp = getComponent<Twili::RenderComponent>();
+
+	}
+
+
+	return true;
+}
 void Player::Update(float dt)
 {
 	Actor::Update(dt);
@@ -21,8 +35,7 @@ void Player::Update(float dt)
 
 	Twili::Vector2 forward = Twili::vec2(0, -1).Rotate(m_transform.rotation);
 
-	auto physicsComponent = getComponent<Twili::Physics>();
-	physicsComponent->ApplyForce(forward * m_speed * thrust);
+	m_physComp->ApplyForce(forward * m_speed * thrust);
 
 	//m_transform.position += forward * m_speed * thrust * Twili::g_time.getDeltaTime();
 
@@ -40,7 +53,7 @@ void Player::Update(float dt)
 
 			//create components
 			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
-			component->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			component->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
 			weapon->AddComponent(std::move(component));
 
 			m_scene->Add(std::move(weapon));
@@ -56,7 +69,7 @@ void Player::Update(float dt)
 
 			//create components
 			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
-			component->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			component->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
 			weapon->AddComponent(std::move(component));
 
 			m_scene->Add(std::move(weapon));
@@ -67,7 +80,7 @@ void Player::Update(float dt)
 
 			//create components
 			std::unique_ptr<Twili::Sprite> renderComponent = std::make_unique<Twili::Sprite>();
-		renderComponent->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+		renderComponent->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
 			weapon->AddComponent(std::move(renderComponent));
 
 			m_scene->Add(std::move(weapon));
@@ -83,7 +96,7 @@ void Player::Update(float dt)
 
 			//create components
 			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
-			component->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			component->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
 			weapon->AddComponent(std::move(component));
 
 			m_scene->Add(std::move(weapon));
@@ -94,7 +107,7 @@ void Player::Update(float dt)
 
 			//create components
 			std::unique_ptr<Twili::Sprite> renderComponent = std::make_unique<Twili::Sprite>();
-			renderComponent->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			renderComponent->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
 			weapon->AddComponent(std::move(renderComponent));
 
 			m_scene->Add(std::move(weapon));
@@ -105,7 +118,7 @@ void Player::Update(float dt)
 
 			//create components
 			std::unique_ptr<Twili::Sprite> renderComponent2 = std::make_unique<Twili::Sprite>();
-			renderComponent2->m_texture = Twili::g_resMan.Get<Twili::Texture>("New Piskel-1.png.png", Twili::g_rend);
+			renderComponent2->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
 			weapon->AddComponent(std::move(renderComponent2));
 
 			m_scene->Add(std::move(weapon));
