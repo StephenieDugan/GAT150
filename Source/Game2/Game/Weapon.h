@@ -2,20 +2,30 @@
 
 #include "FrameWork/Actor.h"
 
-class Weapon : public Twili::Actor
+
+namespace Twili
+{
+class Weapon : public Actor
 {
 public:
+    
     Weapon(float speed, const Twili::Transform& transform) :
         Actor{ transform},
-        m_speed{ speed }
+        speed{ speed }
     {
-        m_lifespan = 1.0f;
+        lifespan = 1.0f;
     }
+    
+    bool Init() override;
 
     void Update(float dt) override;
-    virtual void onCollision(Actor* actor) override;
+    virtual void onCollision(Actor* actor);
+
+    void Read(const json_t& value);
 
 private:
-    float m_speed = 0;
+    float speed = 0;
 };
+
+}
 

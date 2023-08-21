@@ -1,12 +1,13 @@
 #pragma once
 #include "Singleton.h"
-//#include "Object.h"
+#include "Object.h"
 #include "Core/Logger.h"
 #include <memory>
 #include <string>
 #include <map>
 
 #define CREATE_CLASS(classname) Twili::Factory::Instance().Create<Twili::classname>(#classname);
+#define CREATE_BASE_CLASS(classbase, classname) Twili::Factory::Instance().Create<Twili::classbase>(classname);
 
 
 namespace Twili

@@ -4,9 +4,9 @@
 #include <string>
 
 #define CLASS_DECLARATION(classname)\
-virtual const char* GetClassName() {return #classname; }\
-virtual void Read(const json_t& value);\
-class Register\
+	virtual	const char* GetClassName() {return #classname;}\
+	virtual void Read(const json_t& value);\
+	class Register\
 		{\
 		public:\
 			Register()\
@@ -29,7 +29,7 @@ namespace Twili
 
 		virtual ~Object() { OnDestroy(); }
 
-		CLASS_DECLARATION(Object);
+		CLASS_DECLARATION(Object)
 
 		virtual bool Init() { return true; };
 		virtual void OnDestroy() {};

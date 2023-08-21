@@ -5,7 +5,7 @@
 	"name": "Background",
 	"tranform": {
 		"position": [400, 300],
-		"scale": 1,
+		"scale": 1.0,
 		"rotation": 0
 	},
 	"components": [

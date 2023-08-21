@@ -10,11 +10,11 @@ namespace Twili
 	class Actor : public Object
 	{
 	public:
-		CLASS_DECLARATION(Actor);
+		CLASS_DECLARATION(Actor)
 
 		Actor() = default;
 		Actor(const Twili::Transform& transform) : 
-			m_transform{ transform } 
+			transform{ transform } 
 		{}
 
 		virtual bool Init() override;
@@ -35,21 +35,21 @@ namespace Twili
 		class Game* m_game = nullptr;
 
 
-		Twili::Transform m_transform;
-		std::string m_tag;
-		float m_lifespan = -1.0f;
-		bool m_destroyed = false;
+		Twili::Transform transform;
+		std::string tag;
+		float lifespan = -1.0f;
+		bool destroyed = false;
 
 	protected:
 
-		std::vector<std::unique_ptr<class Conponent>> m_components;
+		std::vector<std::unique_ptr<class Conponent>> components;
 		
 	};
 
 	template<typename T>
 	inline T* Actor::getComponent()
 	{
-		for (auto& component : m_components)
+		for (auto& component : components)
 		{
 			T* result = dynamic_cast<T*> (component.get());
 

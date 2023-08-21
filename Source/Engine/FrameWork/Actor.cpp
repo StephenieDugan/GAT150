@@ -4,11 +4,11 @@
 
 namespace Twili {
 
-	CLASS_DEFINITION(Actor);
+	CLASS_DEFINITION(Actor)
 
 	bool Actor::Init()
 	{
-		for (auto& component : m_components)
+		for (auto& component : components)
 		{
 			component->Init();
 		}
@@ -18,7 +18,7 @@ namespace Twili {
 
 	void Actor::OnDestroy()
 	{
-		for (auto& component : m_components)
+		for (auto& component : components)
 		{
 			component->OnDestroy();
 		}
@@ -26,13 +26,13 @@ namespace Twili {
 
 	void Actor::Update(float dt)
 	{
-		if (m_lifespan != -1.0f)
+		if (lifespan != -1.0f)
 		{
-			m_lifespan -= dt;
-			m_destroyed = (m_lifespan <= 0);
+			lifespan -= dt;
+			destroyed = (lifespan <= 0);
 			
 		}
-		for (auto& component : m_components)
+		for (auto& component : components)
 		{
 			component->Update(dt);
 		}
@@ -43,7 +43,7 @@ namespace Twili {
 {
 	//if (m_model) m_model->draw(rend, m_transform);
 
-		for (auto& component : m_components)
+		for (auto& component : components)
 		{
 			RenderComponent* boop = dynamic_cast<RenderComponent*>(component.get());
 			if (boop)
@@ -58,26 +58,37 @@ namespace Twili {
 	void Actor::AddComponent(std::unique_ptr<Conponent> component)
 	{
 		component->m_owner = this;
-		m_components.push_back(std::move(component));
+		components.push_back(std::move(component));
 
 	}
 
-	bool Actor::Read(const rapidjson::Value& value)
+	void Actor::Read(const json_t& value)
 	{
-		if (HAS_DATA(value, actors) && GET_DATA(value, actors).isArray())
+		Object::Read(value);
+
+		READ_DATA(value, tag);
+
+		transform.Read(value);
+
+		READ_DATA(value, lifespan);
+
+		if (HAS_DATA(value, transform)) transform.Read(GET_DATA(value,transform));
+
+		if (HAS_DATA(value, components) && GET_DATA(value, components).IsArray())
 		{
-			for (auto& actorValue : GET_DATA(value, actors).GetArray())
+			for (auto& compValue : GET_DATA(value, components).GetArray())
 			{
 				std::string type;
-				READ_DATA(actorValue, type);
+				READ_DATA(compValue, type);
 
-				auto actor = CREATE_CLASS_BASE(Conponent, type);
-				actor->Read(actorvalue);
+				auto component = CREATE_BASE_CLASS(Conponent, type);
+				component->Read(compValue);
 
-
+				AddComponent(std::move(component));
 			}
 		}
-		return true;
+		
+		
 	}
 
 }

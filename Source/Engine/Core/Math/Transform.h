@@ -2,6 +2,7 @@
 #include "Vector2.h"
 #include "Matrix33.h"
 #include "Matrix22.h"
+#include "Core/Json.h"
 
 namespace Twili
 {
@@ -16,7 +17,7 @@ namespace Twili
 		Transform() = default;
 		Transform(const vec2 postion, float rotation, float scale = 1) : position{ postion }, rotation{ rotation }, scale{ scale } {};
 
-		void Read(const json_t& value);
+		
 
 		mat3 Getmatrix() const
 		{
@@ -27,6 +28,8 @@ namespace Twili
 
 			return mx;
 		}
+
+		void Read(const json_t& value);
 
 	};
 

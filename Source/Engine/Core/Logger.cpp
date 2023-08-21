@@ -4,7 +4,6 @@
 
 namespace Twili
 {
-	Logger g_logger(&std::cout,Twili::info, "log.txt");
 
 	bool Logger::Log(LogLevel loglevel, const std::string& filename, int line)
 	{

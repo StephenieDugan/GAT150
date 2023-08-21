@@ -11,7 +11,6 @@ namespace Twili
             actor->Init();
         }
 
-
         return true;
     }
     void Scene::Update(float dt)
@@ -24,7 +23,7 @@ namespace Twili
                (*iter)->Update(dt);
 
 
-               ((*iter)->m_destroyed) ? iter = m_actors.erase(iter) : iter++;
+               ((*iter)->destroyed) ? iter = m_actors.erase(iter) : iter++;
               
            }
 
@@ -37,10 +36,7 @@ namespace Twili
                    CollisionComp* collision2 = (*iter2)->getComponent<CollisionComp>();
 
 
-                   if (!collision1 == nullptr || !collision2 == nullptr)
-                   {
-                       continue;
-                    }
+                   if (collision1 == nullptr || collision2 == nullptr) continue;
 
                    if (collision1->CheckCollision(collision2))
                    {
@@ -93,15 +89,15 @@ namespace Twili
     void Scene::Read(const json_t& value)
     {
         //copy from Actor.cpp read
-        if (HAS_DATA(value, actors) && GET_DATA(value, actors).isArray())
+        if (HAS_DATA(value, actors) && GET_DATA(value, actors).IsArray())
         {
             for (auto& actorValue : GET_DATA(value, actors).GetArray())
             {
                 std::string type;
                 READ_DATA(actorValue, type);
 
-                auto actor = CREATE_CLASS_BASE(Conponent, type);
-                actor->Read(actorvalue);
+                auto actor = CREATE_BASE_CLASS(Conponent, type);
+                actor->Read(actorValue);
 
 
             }

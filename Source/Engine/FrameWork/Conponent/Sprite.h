@@ -8,8 +8,9 @@ namespace Twili
 	class Sprite : public RenderComponent
 	{
 	public:
-		CLASS_DECLARATION(Sprite);
+		CLASS_DECLARATION(Sprite)
 
+		bool Init() override;
 
 		void Update(float dt) override;
 		void Draw(class Renderer& renderer) override;
@@ -19,6 +20,7 @@ namespace Twili
 		
 
 	public:
+		std::string textureName;
 		res_t<Texture> m_texture;
 	};
 }

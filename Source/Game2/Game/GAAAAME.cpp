@@ -83,18 +83,20 @@ void GAAAAME::Update(float dt)
         {
             //create player
            auto player = std::make_unique<Player>(20.0f, Twili::pi, Twili::Transform{ {400, 300}, 0, 6 });
-            player->m_tag = "Player";
+            player->tag = "Player";
             player->m_game = this;
 
             //create components
-            auto component = CREATE_CLASS(Sprite) //std::make_unique<Twili::Sprite>();
+            auto component = CREATE_CLASS(Sprite) //std::make_unique<Twili::Sprite>(); Twili::Factory::Instance().Create<Twili::Sprite>("Sprite");
             component->m_texture = GET_RESOURCE(Twili::Texture,"CelestialObjects.png", Twili::g_rend);
             player->AddComponent(std::move(component));
 
-            auto collisionComp = CREATE_CLASS(CircleCollisionComp);
+            auto collisionComp = CREATE_CLASS(CircleCollisionComp)
+            collisionComp->m_radius = 30.0f;
+            player->AddComponent(std::move(collisionComp));
 
             //add physics
-            auto physicsComponent = CREATE_CLASS(EnginePhysicsComp);
+            auto physicsComponent = CREATE_CLASS(EnginePhysicsComp)
             physicsComponent->m_damping = 0.8;
             player->AddComponent(std::move(physicsComponent));
 
@@ -110,14 +112,19 @@ void GAAAAME::Update(float dt)
         {
             m_spawn_timer = 0;
             auto enemy = std::make_unique<Enemy>(Twili::randomF(75.0f, 150.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 6 });
-            enemy->m_tag = "Enemy";
+            enemy->tag = "Enemy";
             enemy->m_game = this;
 
             //create components
-           auto component = std::make_unique<Twili::Sprite>();
+           auto component = CREATE_CLASS(Sprite)
             component->m_texture = GET_RESOURCE(Twili::Texture,"CelestialObjects.png", Twili::g_rend);
             enemy->AddComponent(std::move(component));
 
+            auto collisionComp = CREATE_CLASS(CircleCollisionComp)
+            collisionComp->m_radius = 30.0f;
+            enemy->AddComponent(std::move(collisionComp));
+
+            enemy->Init();
             m_scene->Add(std::move(enemy));
         }
         if (m_score >= 600)
@@ -128,7 +135,7 @@ void GAAAAME::Update(float dt)
     case GAAAAME::eState::Level2: //Add Enemy 2: Faster ships but lower health
     {
 
-        for (int i = 0; i < 1; i++) {
+      /*  for (int i = 0; i < 1; i++) {
             float UpgradePopUp = Twili::randomF(0.0f, 7.0f);
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
@@ -138,21 +145,43 @@ void GAAAAME::Update(float dt)
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
             }
-        }
+        }*/
         m_spawn_timer += dt;
         if (m_spawn_timer >= m_spawnTime)
         {
             m_spawn_timer = 0;
             for (int i = 0; i < 2; i++) {
                auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 });
-                enemy->m_tag = "Enemy";
+                enemy->tag = "Enemy";
                 enemy->m_game = this;
+
+                //create components
+                auto component = std::make_unique<Twili::Sprite>();
+                component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+                enemy->AddComponent(std::move(component));
+
+                auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+                collisionComp->m_radius = 30.0f;
+                enemy->AddComponent(std::move(collisionComp));
+
+                enemy->Init();
                 m_scene->Add(std::move(enemy));
             }
            auto enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 });
-            enemy2->m_tag = "Enemy2";
+            enemy2->tag = "Enemy2";
             enemy2->m_health = 50.0f;
             enemy2->m_game = this;
+
+            //create components
+            auto component = std::make_unique<Twili::Sprite>();
+            component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+            enemy2->AddComponent(std::move(component));
+
+            auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+            collisionComp->m_radius = 30.0f;
+            enemy2->AddComponent(std::move(collisionComp));
+
+            enemy2->Init();
             m_scene->Add(std::move(enemy2));
         }
         if (m_score >= 1800)//1800
@@ -165,7 +194,7 @@ void GAAAAME::Update(float dt)
     {
         Twili::g_rend.setColor(176, 48, 62, 1);
 
-        for (int i = 0; i < 1; i++) {
+       /* for (int i = 0; i < 1; i++) {
             float UpgradePopUp = Twili::randomF(0.0f, 7.0f);
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
@@ -186,7 +215,7 @@ void GAAAAME::Update(float dt)
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
             }
-        }
+        }*/
         m_spawnTime = 4;
         m_spawn_timer += dt;
         if (m_spawn_timer >= m_spawnTime)
@@ -195,22 +224,54 @@ void GAAAAME::Update(float dt)
 
             for (int i = 0; i < 4; i++) {
                 auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 });
-                enemy->m_tag = "Enemy";
+                enemy->tag = "Enemy";
                 enemy->m_game = this;
+
+                //create components
+                auto component = std::make_unique<Twili::Sprite>();
+                component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+                enemy->AddComponent(std::move(component));
+
+                auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+                collisionComp->m_radius = 30.0f;
+                enemy->AddComponent(std::move(collisionComp));
+
+                enemy->Init();
                 m_scene->Add(std::move(enemy));
             }
             for (int i = 0; i < 4; i++) {
                auto enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 12 });
-                enemy2->m_tag = "Enemy2";
+                enemy2->tag = "Enemy2";
                 enemy2->m_health = 50.0f;
                 enemy2->m_game = this;
 
+                //create components
+                auto component = std::make_unique<Twili::Sprite>();
+                component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+                enemy2->AddComponent(std::move(component));
+
+                auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+                collisionComp->m_radius = 30.0f;
+                enemy2->AddComponent(std::move(collisionComp));
+
+                enemy2->Init();
                 m_scene->Add(std::move(enemy2));
             }
             auto enemy3 = std::make_unique<Enemy>(Twili::randomF(35.0f, 95.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 16 });
-            enemy3->m_tag = "Enemy3";
+            enemy3->tag = "Enemy3";
             enemy3->m_health = 130.0f;
             enemy3->m_game = this;
+
+            //create components
+            auto component = std::make_unique<Twili::Sprite>();
+            component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+            enemy3->AddComponent(std::move(component));
+
+            auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+            collisionComp->m_radius = 30.0f;
+            enemy3->AddComponent(std::move(collisionComp));
+
+            enemy3->Init();
             m_scene->Add(std::move(enemy3));
         }
         if (m_score >= 3600)//3600
@@ -228,28 +289,71 @@ void GAAAAME::Update(float dt)
 
             for (int i = 0; i < 6; i++) {
                auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 4 });
-                enemy->m_tag = "Enemy";
+                enemy->tag = "Enemy";
                 enemy->m_game = this;
+
+                //create components
+                auto component = std::make_unique<Twili::Sprite>();
+                component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+                enemy->AddComponent(std::move(component));
+
+                auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+                collisionComp->m_radius = 30.0f;
+                enemy->AddComponent(std::move(collisionComp));
+
+                enemy->Init();
                 m_scene->Add(std::move(enemy));
             }
             for (int i = 0; i < 2; i++) {
                 auto enemy2 = std::make_unique<Enemy>(Twili::randomF(90.0f, 180.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 });
-                enemy2->m_tag = "Enemy2";
+                enemy2->tag = "Enemy2";
                 enemy2->m_health = 100.0f;
                 enemy2->m_game = this;
 
+                //create components
+                auto component = std::make_unique<Twili::Sprite>();
+                component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+                enemy2->AddComponent(std::move(component));
+
+                auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+                collisionComp->m_radius = 30.0f;
+                enemy2->AddComponent(std::move(collisionComp));
+
+                enemy2->Init();
                 m_scene->Add(std::move(enemy2));
             }
             auto enemy3 = std::make_unique<Enemy>(Twili::randomF(35.0f, 95.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 13 });
-            enemy3->m_tag = "Enemy3";
+            enemy3->tag = "Enemy3";
             enemy3->m_health = 160.0f;
             enemy3->m_game = this;
+
+            //create components
+            auto component = std::make_unique<Twili::Sprite>();
+            component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+            enemy3->AddComponent(std::move(component));
+
+            auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+            collisionComp->m_radius = 30.0f;
+            enemy3->AddComponent(std::move(collisionComp));
+
+            enemy3->Init();
             m_scene->Add(std::move(enemy3));
 
            auto enemy4 = std::make_unique<Enemy>(Twili::randomF(25.0f, 80.0f), Twili::pi2, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 10 });
-            enemy4->m_tag = "Enemy3";
+            enemy4->tag = "Enemy3";
             enemy4->m_health = 180.0f;
             enemy4->m_game = this;
+
+            //create components
+            component = std::make_unique<Twili::Sprite>();
+            component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+            enemy4->AddComponent(std::move(component));
+
+            collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+            collisionComp->m_radius = 30.0f;
+            enemy4->AddComponent(std::move(collisionComp));
+
+            enemy4->Init();
             m_scene->Add(std::move(enemy4));
         }
         if (m_score >= 7200)//7200
@@ -262,7 +366,7 @@ void GAAAAME::Update(float dt)
         m_spawnTime = 10;
         m_spawn_timer += dt;
 
-        for (int i = 0; i < 1; i++) {
+       /* for (int i = 0; i < 1; i++) {
             float UpgradePopUp = Twili::randomF(0.0f, 7.0f);
             UpgradePopUp -= dt;
             if (UpgradePopUp <= 0)
@@ -283,21 +387,43 @@ void GAAAAME::Update(float dt)
                 powerup->m_game = this;
                 m_scene->Add(std::move(powerup));
             }
-        }
+        }*/
 
         if (m_spawn_timer >= m_spawnTime)
         {
             m_spawn_timer = 0;
             for (int i = 0; i < 6; i++) {
                auto enemy = std::make_unique<Enemy>(Twili::randomF(80.0f, 160.0f), Twili::pi, Twili::Transform{ {400, 300}, Twili::randomF(Twili::pi2), 5 });
-                enemy->m_tag = "Enemy";
+                enemy->tag = "Enemy";
                 enemy->m_game = this;
+
+                //create components
+                auto component = std::make_unique<Twili::Sprite>();
+                component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+                enemy->AddComponent(std::move(component));
+
+                auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+                collisionComp->m_radius = 30.0f;
+                enemy->AddComponent(std::move(collisionComp));
+
+                enemy->Init();
                 m_scene->Add(std::move(enemy));
             }
             auto enemy5 = std::make_unique<Enemy>(Twili::randomF(15.0f, 50.0f), Twili::pi, Twili::Transform{ {800, 200}, Twili::randomF(Twili::pi2), 10 });
-            enemy5->m_tag = "Enemy5";
+            enemy5->tag = "Enemy5";
             enemy5->m_health = 700.0f;
             enemy5->m_game = this;
+
+            //create components
+            auto component = std::make_unique<Twili::Sprite>();
+            component->m_texture = GET_RESOURCE(Twili::Texture, "CelestialObjects.png", Twili::g_rend);
+            enemy5->AddComponent(std::move(component));
+
+            auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
+            collisionComp->m_radius = 30.0f;
+            enemy5->AddComponent(std::move(collisionComp));
+
+            enemy5->Init();
             m_scene->Add(std::move(enemy5));
         }
         if (m_score == 14400)

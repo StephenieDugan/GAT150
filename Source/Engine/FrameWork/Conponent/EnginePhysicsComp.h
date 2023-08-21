@@ -3,9 +3,12 @@
 
 namespace Twili
 {
+	
+
 	class EnginePhysicsComp : public Physics
 	{
 	public:
+		CLASS_DECLARATION(EnginePhysicsComp)
 		// Inherited via Physics
 		virtual void Update(float dt) override;
 

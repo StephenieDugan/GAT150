@@ -1,4 +1,5 @@
 #pragma once
+#include "FrameWork/Singleton.h"
 #include <string>
 #include <cassert>
 #include <fstream>
@@ -6,10 +7,10 @@
 
 #ifdef _DEBUG
 
-#define INFO_LOG(message) { if(Twili::g_logger.Log(Twili::LogLevel::info, __FILE__, __LINE__)) { Twili::g_logger << message << "\n"; }}
-#define WARNING_LOG(message) { if(Twili::g_logger.Log(Twili::LogLevel::warning, __FILE__, __LINE__)){ Twili::g_logger << message << "\n"; }}
-#define ERROR_LOG(message) { if(Twili::g_logger.Log(Twili::LogLevel::error, __FILE__, __LINE__)){ Twili::g_logger << message << "\n"; }}
-#define ASSERT_LOG(condition, message) { if(!condition && Twili::g_logger.Log(Twili::LogLevel::assert, __FILE__, __LINE__)) { Twili::g_logger << message << "\n"; } assert(condition);}
+#define INFO_LOG(message) { if(Twili::Logger::Instance().Log(Twili::LogLevel::info, __FILE__, __LINE__)) { Twili::Logger::Instance() << message << "\n"; }}
+#define WARNING_LOG(message) { if(Twili::Logger::Instance().Log(Twili::LogLevel::warning, __FILE__, __LINE__)){ Twili::Logger::Instance() << message << "\n"; }}
+#define ERROR_LOG(message) { if(Twili::Logger::Instance().Log(Twili::LogLevel::error, __FILE__, __LINE__)){ Twili::Logger::Instance() << message << "\n"; }}
+#define ASSERT_LOG(condition, message) { if(!condition && Twili::Logger::Instance().Log(Twili::LogLevel::assert, __FILE__, __LINE__)) { Twili::Logger::Instance() << message << "\n"; } assert(condition);}
 #else
 #define INFO_LOG(message) {};
 #define WARNING_LOG(message) {};
@@ -28,10 +29,10 @@ namespace Twili
 		assert
 };
 
-	class Logger
+	class Logger :public Singleton<Logger>
 	{
 	public:
-		Logger(std::ostream* ostream, LogLevel logLevel, const std::string& filename = "") : m_ostream{ ostream }, m_LogLevel{ logLevel } { if (!filename.empty()) m_fstream.open(filename); };
+		Logger(std::ostream* ostream = &std::cout , LogLevel logLevel = LogLevel::info, const std::string& filename = "log.txt") : m_ostream{ ostream }, m_LogLevel{ logLevel } { if (!filename.empty()) m_fstream.open(filename); };
 
 		bool Log(LogLevel loglevel, const std::string& filename, int line);
 
@@ -59,6 +60,4 @@ namespace Twili
 		return *this;
 	}
 
-
-	extern Logger g_logger;
 }
