@@ -19,6 +19,8 @@ namespace Twili
 		void Create(Renderer& r, const std::string& text, const Color& color);
 		void Draw(Renderer& r, int x, int y);
 
+		void Draw(Renderer& r, const class Transform& transform);
+
 
 	private:
 		std::shared_ptr<Twili::Font> m_font;

@@ -365,10 +365,12 @@ void GAAAAME::Draw(Twili::Renderer& r)
 
     if (m_state == eState::Title)
     {
+        m_scene->getActorByName("Title")->active = true;
         m_Titletext->Draw(r, 250, 300);
     }
     if (m_state == eState::Level1)
     {
+        m_scene->getActorByName("Title")->active = false;
         m_Scoretext->Draw(r, 40, 20);
         m_Livestext->Draw(r, 680, 20);
         m_Level1text->Draw(r, 400, 20);
