@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-#define GET_RESOURCE(type, filename, ...) Twili::ResourceManager::Instance().Get<type>(filename, __VA_ARGS__);
+#define GET_RESOURCE(type, filename, ...) Twili::ResourceManager::Instance().Get<type>(filename, __VA_ARGS__)
 
 namespace Twili
 {
@@ -30,9 +30,14 @@ namespace Twili
 		}
 
 		res_t<T> resource = std::make_shared<T>();
+		if (!resource->Create(filename, args...))
+		{
+			WARNING_LOG("Could not create resource:" << filename);
+			return res_t<T>();
+		
+		}	
 		resource->Create(filename, args...);
 		m_resources[filename] = resource;
-
 
 		return resource;
 	}

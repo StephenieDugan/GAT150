@@ -61,8 +61,6 @@ int main(int argc, char* argv[]) {
 	Twili::vec2 v{5, 5};
 	v.normalize();
 
-
-	//Twili::Vector2 pos(Twili::randomF(renderer.getWidth()), Twili::randomF(renderer.getHeight()));
 	vector<Star> stars;
 	for (int i = 0; i < 1000; i++) {
 		Twili::Vector2 pos(Twili::Vector2(Twili::random(Twili::g_rend.getWidth()), Twili::random(Twili::g_rend.getHeight())));
@@ -75,8 +73,7 @@ int main(int argc, char* argv[]) {
 	Twili::vec2 position{400, 300};
 	constexpr float turnRate = Twili::degreesToRadians(180);
 	float speed = 150;
-
-	//Twili::res_t<Twili::Texture> texture = Twili::g_resMan.Get<Twili::Texture>("CelestialObjects.png",Twili::g_rend);
+	
 
 	//main game code
 		bool quit = false;

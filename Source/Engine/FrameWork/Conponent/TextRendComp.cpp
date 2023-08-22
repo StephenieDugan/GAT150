@@ -1,6 +1,7 @@
 #include "TextRendComp.h"
 #include "FrameWork/ResourceManager.h"
 #include "FrameWork/Actor.h"
+#include "Renderer/Text.h"
 
 namespace Twili
 {
@@ -16,7 +17,7 @@ namespace Twili
 	}
 	bool TextRendComp::Init()
 	{
-		if (!fontName.empty()) m_text = std::make_unique<Text>( fontName, fontSize);
+		if (!fontName.empty()) m_text = std::make_unique<Twili::Text>(GET_RESOURCE(Twili::Text, fontName, fontSize));
 			
 		return true;
 	}
