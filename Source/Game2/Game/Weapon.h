@@ -9,19 +9,12 @@ class Weapon : public Actor
 {
 public:
     
-    Weapon(float speed, const Twili::Transform& transform) :
-        Actor{ transform},
-        speed{ speed }
-    {
-        lifespan = 1.0f;
-    }
+    CLASS_DECLARATION(Weapon)
     
     bool Init() override;
 
     void Update(float dt) override;
     virtual void onCollision(Actor* actor);
-
-    void Read(const json_t& value);
 
 private:
     float speed = 0;

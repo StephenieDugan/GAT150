@@ -53,56 +53,24 @@ void Player::Update(float dt)
 		if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_SPACE) &&
 			!Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
 		{
-			Twili::Transform transform1{ transform.position, transform.rotation, 1};
-			std::unique_ptr<Twili::Weapon> weapon = std::make_unique<Twili::Weapon>(400.0f, transform1);
-			weapon->tag = "PlayerFire";
-
-			//create components
-			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
-			component->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
-			weapon->AddComponent(std::move(component));
-
-			auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
-			collisionComp->m_radius = 30.0f;
-			weapon->AddComponent(std::move(collisionComp));
-
+			auto weapon = INSTANTIATE(Twili::Weapon, "Rocket");
+			weapon->transform = { transform.position, transform.rotation, 1 };
 			weapon->Init();
 			m_scene->Add(std::move(weapon));
+
 		}
 	}
 	else if (transform.scale == 5 || transform.scale == 4) //2 weapons
 	{
 		if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_SPACE) && !Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_SPACE) && tag == "Player")
 		{
-			Twili::Transform transform1{ transform.position, transform.rotation + Twili::degreesToRadians(10.0f), 1};
-			std::unique_ptr<Twili::Weapon> weapon = std::make_unique<Twili::Weapon>(400.0f, transform1);
-			weapon->tag = "PlayerFire";
-
-			//create components
-			auto component = std::make_unique<Twili::Sprite>();
-			component->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
-			weapon->AddComponent(std::move(component));
-
-			auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
-			collisionComp->m_radius = 30.0f;
-			weapon->AddComponent(std::move(collisionComp));
-
+			auto weapon = INSTANTIATE(Twili::Weapon, "Rocket");
+			weapon->transform = { transform.position, transform.rotation + Twili::degreesToRadians(10.0f), 1 };
 			weapon->Init();
 			m_scene->Add(std::move(weapon));
 
-			Twili::Transform transform2{ transform.position, transform.rotation - Twili::degreesToRadians(10.0f), 1};
-			weapon = std::make_unique<Twili::Weapon>(400.0f, transform2);
-			weapon->tag = "PlayerFire";
-
-			//create components
-			component = std::make_unique<Twili::Sprite>();
-			component->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
-			weapon->AddComponent(std::move(component));
-
-			collisionComp = std::make_unique<Twili::CircleCollisionComp>();
-			collisionComp->m_radius = 30.0f;
-			weapon->AddComponent(std::move(collisionComp));
-
+			weapon = INSTANTIATE(Twili::Weapon, "Rocket");
+			weapon->transform = { transform.position, transform.rotation - Twili::degreesToRadians(10.0f), 1 };
 			weapon->Init();
 			m_scene->Add(std::move(weapon));
 		}
@@ -111,51 +79,18 @@ void Player::Update(float dt)
 	{
 		if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_SPACE) && !Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_SPACE) && tag == "Player")
 		{
-			Twili::Transform transform2{ transform.position, transform.rotation, 1};
-			std::unique_ptr<Twili::Weapon> weapon = std::make_unique<Twili::Weapon>(400.0f, transform2);
-			weapon->tag = "PlayerFire";
-
-			//create components
-			std::unique_ptr<Twili::Sprite> component = std::make_unique<Twili::Sprite>();
-			component->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
-			weapon->AddComponent(std::move(component));
-
-			auto collisionComp = std::make_unique<Twili::CircleCollisionComp>();
-			collisionComp->m_radius = 30.0f;
-			weapon->AddComponent(std::move(collisionComp));
-
+			auto weapon = INSTANTIATE(Twili::Weapon, "Rocket");
+			weapon->transform = { transform.position, transform.rotation + Twili::degreesToRadians(10.0f), 1 };
 			weapon->Init();
 			m_scene->Add(std::move(weapon));
 
-			Twili::Transform transform1{ transform.position, transform.rotation + Twili::degreesToRadians(10.0f), 1};
-			weapon = std::make_unique<Twili::Weapon>(400.0f, transform1);
-			weapon->tag = "PlayerFire";
-
-			//create components
-			std::unique_ptr<Twili::Sprite> renderComponent = std::make_unique<Twili::Sprite>();
-			renderComponent->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
-			weapon->AddComponent(std::move(renderComponent));
-
-			collisionComp = std::make_unique<Twili::CircleCollisionComp>();
-			collisionComp->m_radius = 30.0f;
-			weapon->AddComponent(std::move(collisionComp));
-
+			weapon = INSTANTIATE(Twili::Weapon, "Rocket");
+			weapon->transform = { transform.position, transform.rotation, 1 };
 			weapon->Init();
 			m_scene->Add(std::move(weapon));
 
-			Twili::Transform transform3{ transform.position, transform.rotation - Twili::degreesToRadians(10.0f), 1};
-			weapon = std::make_unique<Twili::Weapon>(400.0f, transform3);
-			weapon->tag = "PlayerFire";
-
-			//create components
-			std::unique_ptr<Twili::Sprite> renderComponent2 = std::make_unique<Twili::Sprite>();
-			renderComponent2->m_texture = GET_RESOURCE(Twili::Texture,"New Piskel-1.png.png", Twili::g_rend);
-			weapon->AddComponent(std::move(renderComponent2));
-
-			collisionComp = std::make_unique<Twili::CircleCollisionComp>();
-			collisionComp->m_radius = 30.0f;
-			weapon->AddComponent(std::move(collisionComp));
-
+			weapon = INSTANTIATE(Twili::Weapon, "Rocket");
+			weapon->transform = { transform.position, transform.rotation - Twili::degreesToRadians(10.0f), 1 };
 			weapon->Init();
 			m_scene->Add(std::move(weapon));
 		}

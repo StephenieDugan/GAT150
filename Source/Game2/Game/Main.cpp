@@ -14,6 +14,8 @@
 
 #include "Core\Core.h"
 
+#include "Physics/PhysicsSystem.h"
+
 #include "Player.h"
 #include "Enemy.h"
 #include "GAAAAME.h"
@@ -49,10 +51,9 @@ int main(int argc, char* argv[]) {
 
 	Twili::g_rend.Init(); Twili::g_rend.CreateWindow("CSC196", 800, 600);
 
-	//Input System
 	Twili::g_inputSys.Initialize();
-	//Audio
 	Twili::g_noise.Initialize();
+	Twili::PhysicsSystem::Instance().Init();
 
 	unique_ptr<GAAAAME> game = make_unique<GAAAAME>();
 	game->Init();
@@ -129,7 +130,7 @@ int main(int argc, char* argv[]) {
 		Twili::g_rend.beginFrame();
 		Twili::g_noise.PlayOneShot("MakeItPop", true);
 		//Twili::Vector2 vel(1.0f, 3.0f);
-
+		game->Draw(Twili::g_rend);
 		//text->Draw(Twili::g_rend, 400, 300);
 
 		for (auto& star : stars)
@@ -147,7 +148,7 @@ int main(int argc, char* argv[]) {
 			Twili::g_rend.drawPoint(star.m_pos.x,star.m_pos.y);
 
 		}
-		game->Draw(Twili::g_rend);
+		
 		Twili::g_ParticleSystem.Draw(Twili::g_rend);
 		//Twili::g_rend.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 		//model.draw(Twili::g_rend, transform.position,transform.rotation,transform.scale);

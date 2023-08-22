@@ -1,19 +1,213 @@
 {
-	"actors":[
+	"actors": [
 		{
-	"type": "Actor", 
-	"name": "Background",
-	"tranform": {
-		"position": [400, 300],
-		"scale": 1.0,
-		"rotation": 0
-	},
-	"components": [
+			"type": "Actor",
+			"name": "spaceBackground",
+			"persistent": true,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 3,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "spaceBackground.jpg"
+				}
+			]
+		},
 		{
-			"type": "Sprite",
-			"textureName": "spaceBackground.jpg"
-		}
-	]
+			"type": "Actor",
+			"name": "Player",
+			"persistent": false,
+			"tag": "Player",
+			"turnRate": 3.14,
+			"speed": 20.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 6,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "Main Ship - Base - Full health.png"
+				},
+				{
+					"type": "CircleCollisionComp",
+					"m_radius": 30.0
+
+				},
+				{
+					"type": "EnginePhysicsComp",
+					"m_damping": 0.8
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Enemy1",
+			"persistent": false,
+			"tag": "Enemy",
+			"turnRate": 3.14,
+			"speed": 135.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 6,
+				"rotation": 6.28
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "Main Ship - Engines - Base Engine.png"
+				},
+				{
+					"type": "CircleCollisionComp",
+					"m_radius": 30.0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Enemy2",
+			"persistent": false,
+			"m_health": 50.0,
+			"tag": "Enemy2",
+			"turnRate": 3.14,
+			"speed": 154.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 6,
+				"rotation": 6.28
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "Main Ship - Engines - Burst Engine.png"
+				},
+				{
+					"type": "CircleCollisionComp",
+					"m_radius": 30.0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Enemy3",
+			"persistent": false,
+			"m_health": 130.0,
+			"tag": "Enemy3",
+			"turnRate": 3.14,
+			"speed": 69.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 6,
+				"rotation": 6.28
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "Main Ship - Engines - Big Pulse Engine.png"
+				},
+				{
+					"type": "CircleCollisionComp",
+					"m_radius": 30.0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Enemy4",
+			"persistent": false,
+			"m_health": 180.0,
+			"tag": "Enemy4",
+			"turnRate": 3.14,
+			"speed": 45.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 6,
+				"rotation": 6.28
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "Main Ship - Engines - Big Pulse Engine.png"
+				},
+				{
+					"type": "CircleCollisionComp",
+					"m_radius": 30.0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Enemy5",
+			"persistent": false,
+			"m_health": 700.0,
+			"tag": "Enemy5",
+			"turnRate": 3.14,
+			"speed": 30.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 6,
+				"rotation": 6.28
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "Main Ship - Engines - Supercharged Engine.png"
+				},
+				{
+					"type": "CircleCollisionComp",
+					"m_radius": 30.0
+				}
+			]
+		},
+		{
+			"type": "Weapon",
+			"name": "Rocket",
+			"prototype": true,
+			"tag": "PlayerFire",
+			"lifespan": 3,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1,
+				"rotation": 0
+			},
+			"speed": 300,
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "New Piskel-1.png.png"
+				},
+				{
+					"type": "CircleCollisionComp"
+
+				}
+			]
+		},
+		{
+			"type": "Weapon",
+			"name": "Rocket2",
+			"prototype": true,
+			"tag": "EnemyFire",
+			"lifespan": 3,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1,
+				"rotation": 0
+			},
+			"speed": 300,
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "New Piskel-1.png.png"
+				},
+				{
+					"type": "CircleCollisionComp"
+
+				}
+			]
 		}
 	]
 }

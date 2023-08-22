@@ -56,9 +56,10 @@ void Enemy::Update(float dt)
 	if (m_fireTimer <= 0)
 	{
 		m_fireTimer = m_fireRate;
-		Twili::Transform transform1{ transform.position, transform.rotation};
-		std::unique_ptr<Twili::Weapon> weapon = std::make_unique<Twili::Weapon>(400.0f, transform);
-		weapon->tag = "EnemyFire";
+
+		auto weapon = INSTANTIATE(Twili::Weapon, "Rocket2");
+		weapon->transform = { transform.position, transform.rotation};
+		weapon->Init();
 		m_scene->Add(std::move(weapon));
 		std::cout << "blep";
 
@@ -118,7 +119,7 @@ void Enemy::onCollision(Actor* other)
 		data.damping = 0.5f;
 		data.color = Twili::Color{ 1, 1, 0, 1 };
 		Twili::Transform transform1{ transform.position, 0, 1 };
-		auto emitter = std::make_unique<Twili::Emitter>(transform, data);
+		auto emitter = std::make_unique<Twili::Emitter>(transform1, data);
 		emitter->lifespan = 1.0f;
 		m_scene->Add(std::move(emitter));
 	}

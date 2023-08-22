@@ -6,6 +6,22 @@ namespace Twili {
 
 	CLASS_DEFINITION(Actor)
 
+	Actor::Actor(const Actor& other)
+	{
+		name = other.name;
+		tag = other.tag;
+		lifespan = other.lifespan;
+		transform = other.transform;
+		m_scene = other.m_scene;
+		m_game = other.m_game;
+
+		for (auto& component : other.components)
+		{
+			auto clone = std::unique_ptr<Conponent>(dynamic_cast<Conponent*>(component->Clone().release()));
+			AddComponent(std::move(clone));
+		}
+	}
+
 	bool Actor::Init()
 	{
 		for (auto& component : components)
@@ -68,9 +84,14 @@ namespace Twili {
 
 		READ_DATA(value, tag);
 
-		transform.Read(value);
+		READ_DATA(value, persistent);
+
+		READ_DATA(value, prototype);
 
 		READ_DATA(value, lifespan);
+
+
+		
 
 		if (HAS_DATA(value, transform)) transform.Read(GET_DATA(value,transform));
 

@@ -16,6 +16,7 @@ namespace Twili
 		Actor(const Twili::Transform& transform) : 
 			transform{ transform } 
 		{}
+		Actor(const Actor& other);
 
 		virtual bool Init() override;
 		virtual void OnDestroy() override;
@@ -39,6 +40,8 @@ namespace Twili
 		std::string tag;
 		float lifespan = -1.0f;
 		bool destroyed = false;
+		bool persistent = false;
+		bool prototype = false;
 
 	protected:
 

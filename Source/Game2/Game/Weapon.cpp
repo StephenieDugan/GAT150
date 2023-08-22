@@ -4,10 +4,11 @@
 
 namespace Twili
 {
-
+	CLASS_DEFINITION(Weapon)
 
 	bool Weapon::Init()
 	{
+		Actor::Init();
 
 		auto collisionComp = getComponent<Twili::CollisionComp>();
 		if (collisionComp)
@@ -27,6 +28,7 @@ namespace Twili
 
 	void Weapon::Update(float dt)
 	{
+		Actor::Update(dt);
 
 		Twili::Vector2 forward = Twili::vec2(0, -1).Rotate(transform.rotation);
 		transform.position += forward * speed * Twili::g_time.getDeltaTime();
@@ -44,6 +46,8 @@ namespace Twili
 
 	void Weapon::Read(const json_t& value)
 	{
+		Actor::Read(value);
+
 		READ_DATA(value, speed);
 	}
 }

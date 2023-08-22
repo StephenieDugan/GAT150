@@ -1,9 +1,9 @@
-INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(56)Class registered: Sprite
-INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(56)Class registered: ModRendComp
-INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(56)Class registered: EnginePhysicsComp
-INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(56)Class registered: CircleCollisionComp
-INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(56)Class registered: Actor
-INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Game2\Game\Main.cpp(44)INITIALLIZE ENGINE.........
-WARNING: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\Core\fileIO.cpp(41)file not loaded: scene.json
-WARNING: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\Core\Json.cpp(15)Cannot open file: scene.json
-ERROR: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Scene.cpp(82)Could not load scene file: scene.json
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(78)Class registered: Weapon
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(78)Class registered: Sprite
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(78)Class registered: ModRendComp
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(78)Class registered: EnginePhysicsComp
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(78)Class registered: CircleCollisionComp
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(78)Class registered: Actor
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Game2\Game\Main.cpp(46)INITIALLIZE ENGINE.........
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(87)Prototype Class registered: Rocket
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(87)Prototype Class registered: Rocket2

@@ -20,9 +20,7 @@ namespace Twili
 
            while (iter != m_actors.end())
            { 
-               (*iter)->Update(dt);
-
-
+               if ((*iter)->active) (*iter)->Update(dt);
                ((*iter)->destroyed) ? iter = m_actors.erase(iter) : iter++;
               
            }
@@ -54,7 +52,7 @@ namespace Twili
     {
         for (auto& actor : m_actors)
         {
-            actor->Draw(renderer);
+            if(actor->active) actor->Draw(renderer);
         }
     }
 
@@ -69,8 +67,15 @@ namespace Twili
         //m_actors.remove(actor);
     }
 
-    void Scene::RemoveAll()
+    void Scene::RemoveAll(bool force)
     {
+        auto iter = m_actors.begin();
+
+        while (iter != m_actors.end())
+        {
+           (force || !(*iter)->persistent) ? iter = m_actors.erase(iter) : iter++;
+        }
+
         m_actors.clear();
     }
 
@@ -96,8 +101,20 @@ namespace Twili
                 std::string type;
                 READ_DATA(actorValue, type);
 
-                auto actor = CREATE_BASE_CLASS(Conponent, type);
+                auto actor = CREATE_BASE_CLASS(Actor, type);
                 actor->Read(actorValue);
+
+                if (actor->prototype)
+                {
+                    std::string name1 = actor->name;
+                    Factory::Instance().RegisterPrototype(name1, std::move(actor));
+                }
+                else
+                {
+                    Add(std::move(actor));
+                }
+
+                
 
 
             }
