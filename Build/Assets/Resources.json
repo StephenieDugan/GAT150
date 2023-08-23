@@ -27,7 +27,7 @@
 			},
 			"components": [
 				{
-					"type": "TextRenderComponent",
+					"type": "TextRendComp",
 					"fontName": "arcadeclassic.ttf",
 					"fontSize": 24,
 					"text": "ASTEROIDZ"
