@@ -14,9 +14,12 @@
 
 #include "CollisionComp.h"
 #include "CircleCollisionComp.h"
+#include "Conponent/Box2dCollisionComp.h"
+#include "Conponent/Box2dPhysComp.h"
 
 #include "Resource/Resource.h"
 #include "ResourceManager.h"
 
 #include "Factory.h"
+#include "Event/EventManager.h"
 

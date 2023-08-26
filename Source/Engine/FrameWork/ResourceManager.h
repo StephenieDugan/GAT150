@@ -13,7 +13,7 @@ namespace Twili
 	{
 	public:
 		template <typename T, typename ... TArgs>
-		std::shared_ptr<T> Get(const std::string& filename, TArgs ... args);
+		res_t<T> Get(const std::string& filename, TArgs ... args);
 
 	private:
 		std::map<std::string, res_t<Resource>> m_resources;
@@ -36,7 +36,7 @@ namespace Twili
 			return res_t<T>();
 		
 		}	
-		//resource->Create(filename, args...);
+		resource->Create(filename, args...);
 		m_resources[filename] = resource;
 
 		return resource;

@@ -9,7 +9,7 @@ namespace Twili
 	public:
 		virtual ~Resource() = default;
 
-		virtual bool Create(std::string filename, ...) =0;
+		virtual bool Create(std::string filename, ...) = 0;
 
 
 	};

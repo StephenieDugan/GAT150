@@ -16,6 +16,11 @@ void EnginePhysicsComp::ApplyForce(const vec2& force)
 
 }
 
+void EnginePhysicsComp::ApplyTorque(float torque)
+{
+
+}
+
 void EnginePhysicsComp::Read(const json_t& value)
 {
 	//

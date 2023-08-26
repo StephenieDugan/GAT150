@@ -14,5 +14,9 @@ namespace Twili
 
 		virtual void ApplyForce(const vec2& force) override;
 
+
+		// Inherited via Physics
+		void ApplyTorque(float torque) override;
+
 	};
 }

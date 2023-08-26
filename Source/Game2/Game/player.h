@@ -2,21 +2,28 @@
 #include "FrameWork/Actor.h"
 #include "FrameWork/Conponent/Physics.h"
 
-class Player : public Twili::Actor
+namespace Twili
 {
-public:
-	Player(float speed, float turnRate, const Twili::Transform& transform) :
-		Actor{ transform }, m_speed{ speed }, m_turnRate{turnRate} {};
 
-	bool Init() override;
 
-	void Update(float dt) override;
-	virtual void onCollision(Actor* actor) override;
 
-protected:
-	float m_speed = 0;
-	float m_turnRate = 0;
-	float m_health = 100.0f;
+	class Player : public Twili::Actor
+	{
+	public:
+		CLASS_DECLARATION(Player)
+		/*Player(float speed, float turnRate, const Twili::Transform& transform) :
+			Actor{ transform }, m_speed{ speed }, m_turnRate{ turnRate } {};*/
 
-	class Twili::Physics* m_physComp = nullptr;
-};
+		bool Init() override;
+
+		void Update(float dt) override;
+		virtual void onCollisionEnter(Actor* actor) override;
+
+	protected:
+		float speed = 0;
+		float turnRate = 0;
+		float m_health = 100.0f;
+
+		class Twili::Physics* m_physComp = nullptr;
+	};
+}

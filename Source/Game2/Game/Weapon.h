@@ -1,7 +1,6 @@
 #pragma once
-
 #include "FrameWork/Actor.h"
-
+#include "FrameWork/Conponent/Physics.h"
 
 namespace Twili
 {
@@ -14,10 +13,11 @@ public:
     bool Init() override;
 
     void Update(float dt) override;
-    virtual void onCollision(Actor* actor);
+    virtual void onCollisionEnter(Actor* actor);
 
 private:
     float speed = 0;
+    Twili::Physics* m_physComp = nullptr;
 };
 
 }

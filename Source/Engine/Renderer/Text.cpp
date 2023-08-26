@@ -34,7 +34,7 @@ void Text::Draw(Renderer& r, const Transform& transform)
 	SDL_QueryTexture(m_texture, nullptr, nullptr, &width, &height);
 	mat3 mx = transform.Getmatrix();
 	vec2 position = mx.GetTranslation();
-	vec2 size = vec2{ width, height } *mx.GetScale(); 
+	vec2 size = vec2{ width, height } * mx.GetScale(); 
 	SDL_Rect dest;
 	dest.x = (int)(position.x - (position.x/2));
 	dest.y = (int)(position.y - (position.y/2));

@@ -11,10 +11,13 @@ namespace Twili
 
 		TextRendComp() = default;
 		TextRendComp(const TextRendComp& other);
+
 		bool Init() override;
 		void Update(float dt) override;
 		void Draw(class Renderer& renderer) override;
+
 		void SetText(const std::string& string);
+
 	public:
 		std::string text;
 		std::string fontName;

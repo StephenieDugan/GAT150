@@ -8,7 +8,7 @@ namespace Twili
 
 
 
-	class GAAAAME : public Twili::Game, Twili::IEventListener
+	class Platformer : public Twili::Game, Twili::IEventListener
 	{
 	public:
 
@@ -44,19 +44,6 @@ namespace Twili
 
 	private:
 		eState m_state = eState::Title;
-		std::shared_ptr<Twili::Font> font;
-		std::shared_ptr<Twili::Font> font2;
-		std::unique_ptr<Twili::Text> m_Scoretext;
-		std::unique_ptr<Twili::Text> m_Livestext;
-		std::unique_ptr<Twili::Text> m_Level1text;
-		std::unique_ptr<Twili::Text> m_Level2text;
-		std::unique_ptr<Twili::Text> m_Level3text;
-		std::unique_ptr<Twili::Text> m_Level4text;
-		std::unique_ptr<Twili::Text> m_Level5text;
-		std::unique_ptr<Twili::Text> m_Healthtext;
-		std::unique_ptr<Twili::Text> m_Titletext;
-		std::unique_ptr<Twili::Text> m_GOvertext;
-		std::unique_ptr<Twili::Text> m_Winnertext;
 		float m_spawn_timer = 0;
 		float m_spawnTime = 3;
 
@@ -66,3 +53,4 @@ namespace Twili
 	};
 
 }
+

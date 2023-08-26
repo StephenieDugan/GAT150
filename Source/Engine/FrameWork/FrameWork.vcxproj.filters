@@ -11,6 +11,9 @@
     <Filter Include="Source Files\Conponent">
       <UniqueIdentifier>{cbb777c3-9cfc-4146-a6d8-1a5bee488e40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Event">
+      <UniqueIdentifier>{6fa64c4e-86ac-43b0-932d-145840a04574}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp">
@@ -38,6 +41,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Conponent\TextRendComp.cpp">
+      <Filter>Source Files\Conponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\EventManager.cpp">
+      <Filter>Source Files\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Conponent\Box2dPhysComp.cpp">
+      <Filter>Source Files\Conponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Conponent\Box2dCollisionComp.cpp">
       <Filter>Source Files\Conponent</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,6 +109,18 @@
       <Filter>Source Files\Conponent</Filter>
     </ClInclude>
     <ClInclude Include="Conponent\TextRendComp.h">
+      <Filter>Source Files\Conponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event.h">
+      <Filter>Source Files\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\EventManager.h">
+      <Filter>Source Files\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Conponent\Box2dPhysComp.h">
+      <Filter>Source Files\Conponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Conponent\Box2dCollisionComp.h">
       <Filter>Source Files\Conponent</Filter>
     </ClInclude>
   </ItemGroup>

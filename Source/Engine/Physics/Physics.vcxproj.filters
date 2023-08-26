@@ -8,9 +8,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsSystem.h" />
+    <ClInclude Include="ContactListener.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PhysicsSystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactListener.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

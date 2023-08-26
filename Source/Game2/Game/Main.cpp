@@ -3,6 +3,8 @@
 #include <array>
 #include <vector>
 #include <thread>
+#include <map>
+#include <functional>
 
 #include "Renderer\Renderer.h"
 
@@ -40,9 +42,10 @@ public:
 	Twili::Vector2 velocity;
 };
 
-int main(int argc, char* argv[]) {
 
-
+int main(int argc, char* argv[]) 
+{
+	
 	INFO_LOG("INITIALLIZE ENGINE.........");
 
 	Twili::MemoryTracker::Initialize();
@@ -55,7 +58,7 @@ int main(int argc, char* argv[]) {
 	Twili::g_noise.Initialize();
 	Twili::PhysicsSystem::Instance().Init();
 
-	unique_ptr<GAAAAME> game = make_unique<GAAAAME>();
+	unique_ptr<Twili::GAAAAME> game = make_unique<Twili::GAAAAME>();
 	game->Init();
 	
 	Twili::vec2 v{5, 5};
@@ -84,7 +87,7 @@ int main(int argc, char* argv[]) {
 		Twili::g_inputSys.Update();
 		Twili::g_noise.Update();
 		Twili::g_ParticleSystem.Update(Twili::g_time.getDeltaTime());
-		
+		Twili::PhysicsSystem::Instance().Update(Twili::g_time.getDeltaTime());
 		
 
 		if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_ESCAPE))

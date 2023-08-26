@@ -25,26 +25,26 @@ namespace Twili
               
            }
 
-           //check collisions
-           for (auto iter1 = m_actors.begin(); iter1 != m_actors.end(); iter1++)
-           {
-               for (auto iter2 = std::next(iter1,1); iter2 != m_actors.end(); iter2++)
-               {
-                   CollisionComp* collision1 = (*iter1)->getComponent<CollisionComp>();
-                   CollisionComp* collision2 = (*iter2)->getComponent<CollisionComp>();
+           ////check collisions
+           //for (auto iter1 = m_actors.begin(); iter1 != m_actors.end(); iter1++)
+           //{
+           //    for (auto iter2 = std::next(iter1,1); iter2 != m_actors.end(); iter2++)
+           //    {
+           //        CollisionComp* collision1 = (*iter1)->getComponent<CollisionComp>();
+           //        CollisionComp* collision2 = (*iter2)->getComponent<CollisionComp>();
 
 
-                   if (collision1 == nullptr || collision2 == nullptr) continue;
+           //        if (collision1 == nullptr || collision2 == nullptr) continue;
 
-                   if (collision1->CheckCollision(collision2))
-                   {
-                       (*iter1)->onCollision(iter2->get());
-                       (*iter2)->onCollision(iter1->get());
-                       //boom
+           //        if (collision1->CheckCollision(collision2))
+           //        {
+           //            (*iter1)->onCollision(iter2->get());
+           //            (*iter2)->onCollision(iter1->get());
+           //            //boom
 
-                   }
-               }
-           }
+           //        }
+           //    }
+           //}
        
     }
 

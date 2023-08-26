@@ -17,7 +17,7 @@ namespace Twili
 	}
 	bool TextRendComp::Init()
 	{
-		if (!fontName.empty()) m_text = std::make_unique<Twili::Text>(GET_RESOURCE(Twili::Text, fontName, fontSize));
+		if (!fontName.empty()) m_text = std::make_unique<Twili::Text>(GET_RESOURCE(Twili::Font, fontName, fontSize));
 			
 		return true;
 	}

@@ -8,7 +8,7 @@
 
 #define CREATE_CLASS(classname) Twili::Factory::Instance().Create<Twili::classname>(#classname);
 #define CREATE_BASE_CLASS(classbase, classname) Twili::Factory::Instance().Create<Twili::classbase>(classname);
-#define INSTANTIATE(classbase, classname) Twili::Factory::Instance().Create<classbase>(classname);
+#define INSTANTIATE(classbase, classname) Twili::Factory::Instance().Create<Twili::classbase>(classname);
 
 
 namespace Twili
@@ -85,6 +85,7 @@ namespace Twili
 	inline void Factory::RegisterPrototype(const std::string& key, std::unique_ptr<T> prototype)
 	{
 		INFO_LOG("Prototype Class registered: " << key);
+
 		m_registry[key] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
 	}
 
@@ -97,6 +98,8 @@ namespace Twili
 		{
 			return std::unique_ptr<T>(dynamic_cast<T*>(iter->second->Create().release()));
 		}
+
+		ERROR_LOG("Class not found in Factory:" << key);
 
 		return std::unique_ptr<T>();
 	}

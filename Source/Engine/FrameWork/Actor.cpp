@@ -83,15 +83,10 @@ namespace Twili {
 		Object::Read(value);
 
 		READ_DATA(value, tag);
-
 		READ_DATA(value, persistent);
-
 		READ_DATA(value, prototype);
-
 		READ_DATA(value, lifespan);
 
-
-		
 
 		if (HAS_DATA(value, transform)) transform.Read(GET_DATA(value,transform));
 

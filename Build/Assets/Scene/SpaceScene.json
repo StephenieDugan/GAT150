@@ -102,7 +102,7 @@
 		{
 			"type": "Enemy",
 			"name": "Enemy2",
-			"prototype": true,
+			"persistent": false,
 			"m_health": 50.0,
 			"tag": "Enemy2",
 			"turnRate": 3.14,
@@ -135,7 +135,7 @@
 		{
 			"type": "Enemy",
 			"name": "Enemy3",
-			"prototype": true,
+			"persistent": false,
 			"m_health": 130.0,
 			"tag": "Enemy3",
 			"turnRate": 3.14,
@@ -168,7 +168,7 @@
 		{
 			"type": "Enemy",
 			"name": "Enemy4",
-			"prototype": true,
+			"persistent": false,
 			"m_health": 180.0,
 			"tag": "Enemy4",
 			"turnRate": 3.14,
@@ -201,7 +201,7 @@
 		{
 			"type": "Enemy",
 			"name": "Enemy5",
-			"prototype": true,
+			"persistent": false,
 			"m_health": 700.0,
 			"tag": "Enemy5",
 			"turnRate": 3.14,
