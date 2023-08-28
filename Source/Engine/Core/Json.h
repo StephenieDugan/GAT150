@@ -1,6 +1,7 @@
 #pragma once
 #include <RapidJson/rapidjson-master/include/rapidjson/document.h>
 #include <string>
+#include "Core/Math/Color.h"
 #include "Core/Math/Vector2.h"
 
 #define READ_DATA(value, data) Twili::Json::Read(value, #data, data)
@@ -21,6 +22,7 @@ namespace Twili
 		static bool Read(const rapidjson::Value& value, const std::string& name, bool& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, std::string& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, vec2& data, bool required = false);
+		static bool Read(const rapidjson::Value& value, const std::string& name, Color data, bool required = false);
 	};
 
 	using json_t = rapidjson::Value;

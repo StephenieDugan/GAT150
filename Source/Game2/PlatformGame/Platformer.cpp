@@ -15,7 +15,7 @@ namespace Twili
 
 
         m_scene = std::make_unique<Twili::Scene>();
-        m_scene->Load("scene/PlatformScene.json");
+        m_scene->Load("Scene/PlatformScene.json");
         m_scene->Init();
 
         //add events

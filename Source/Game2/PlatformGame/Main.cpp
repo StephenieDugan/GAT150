@@ -29,9 +29,9 @@ int main(int argc, char* argv[])
 
 	Twili::MemoryTracker::Initialize();
 	Twili::seedRandom((unsigned)time(nullptr));
-	Twili::setFilePath("assets");
+	Twili::setFilePath("assets/Platformer");
 
-	Twili::g_rend.Init(); Twili::g_rend.CreateWindow("CSC196", 800, 600);
+	Twili::g_rend.Init(); Twili::g_rend.CreateWindow("CSC150", 800, 600);
 
 	Twili::g_inputSys.Initialize();
 	Twili::g_noise.Initialize();

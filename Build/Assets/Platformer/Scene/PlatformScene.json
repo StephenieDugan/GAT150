@@ -28,9 +28,10 @@
 			"components": [
 				{
 					"type": "TextRendComp",
-					"fontName": "ThaleahFat.ttf",
+					"fontName": "Fonts/ThaleahFat.ttf",
 					"fontSize": 24,
-					"text": "Danger Bros"
+					"text": "Danger Bros",
+						"color":  [1,0,0,1]
 				}
 			]
 		}
