@@ -1,0 +1,93 @@
+{
+	"actors":[
+		{
+			"type":"Actor",
+			"name":"tile01",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"Sprite",
+					"textureName":"Texture/TileMap.png",
+					"source":[
+						96,
+						416,
+						32,
+						32
+					]
+				},
+				{
+					"type":"Box2dPhysComp",
+					"isDynamic":false
+				},
+				{
+					"type": "Box2dCollisionComp",
+					"restitution": 0
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"tile02",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "Texture/TileMap.png",
+					"source": [
+						0,
+						128,
+						32,
+						32
+					]
+				},
+				{
+					"type": "Box2dPhysComp",
+					"isDynamic": false
+				},
+				{
+					"type": "Box2dCollisionComp",
+					"restitution": 0
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"World",
+			"transform":{
+				"position":[
+					32,
+					32
+				]
+			},
+			"components":[
+				{
+					"type":"TilemapComp",
+					"numColumns": 13,
+					"numRows": 10,
+					"size": [64, 64],
+					"tileNames": ["", "tile01", "tile02"],
+					"tiles": [
+							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+							1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+							1, 0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0, 1,
+							1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+							1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+							1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1,
+							1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1,
+							1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+							1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+							]
+				}    
+			]
+		}
+	]
+}

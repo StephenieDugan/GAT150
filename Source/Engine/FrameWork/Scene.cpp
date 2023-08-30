@@ -106,8 +106,8 @@ namespace Twili
 
                 if (actor->prototype)
                 {
-                    std::string name1 = actor->name;
-                    Factory::Instance().RegisterPrototype(name1, std::move(actor));
+                    std::string name = actor->name;
+                    Factory::Instance().RegisterPrototype(name, std::move(actor));
                 }
                 else
                 {

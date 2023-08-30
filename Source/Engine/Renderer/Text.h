@@ -13,7 +13,7 @@ namespace Twili
 	{
 	public:
 		Text() = default;
-		Text(std::shared_ptr<Twili::Font> font) : m_font{ font } {};
+		Text(std::shared_ptr<Twili::Font> font) : m_font{ font } {}
 		~Text();
 
 		void Create(Renderer& r, const std::string& text, const Color& color);

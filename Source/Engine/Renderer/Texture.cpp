@@ -28,6 +28,7 @@ namespace Twili
 	vec2 Texture::GetSize()
 	{
 		// ASSERT texture is not null
+		//ASSERT_LOG(m_texture, "Texture could not be read")
 		SDL_Point point;
 		// https://wiki.libsdl.org/SDL2/SDL_QueryTexture<get point.x and point.y, use link above>
 		SDL_QueryTexture(m_texture, nullptr, nullptr, &point.x, &point.y);

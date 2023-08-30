@@ -16,7 +16,10 @@ namespace Twili
 
         m_scene = std::make_unique<Twili::Scene>();
         m_scene->Load("Scene/PlatformScene.json");
+        m_scene->Load("Scene/tilemap.json");
         m_scene->Init();
+
+        //m_scene->getActorByName("Title")->active = true;
 
         //add events
         EVENT_SUBSCRIBE("AddPoints", Platformer::AddPoints);
@@ -34,7 +37,13 @@ namespace Twili
         switch (m_state)
         {
         case Platformer::eState::Title:
+        {/*
+            auto actor = INSTANTIATE(Actor, "Crate");
+            actor->transform.position = { Twili::random(0,Twili::g_rend.getWidth()), 100 };
+            actor->Init();
 
+            m_scene->Add(std::move(actor));*/
+        }
             break;
         case Platformer::eState::StartGame:
             m_score = 0;

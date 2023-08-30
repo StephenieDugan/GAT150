@@ -17,6 +17,10 @@ namespace Twili
 			transform{ transform } 
 		{}
 		Actor(const Actor& other);
+		virtual ~Actor()
+		{
+			OnDestroy();
+		}
 
 		virtual bool Init() override;
 		virtual void OnDestroy() override;

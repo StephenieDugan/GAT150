@@ -12,7 +12,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "spaceBackground.jpg"
+					"textureName": "Texture/spaceBackground.jpg"
 				}
 			]
 		},
@@ -41,7 +41,7 @@
 			"tag": "Player",
 			"transform": {
 				"position": [ 400, 300 ],
-				"scale": 6,
+				"scale": 2,
 				"rotation": 0
 			},
 			"turnRate": 0.5,
@@ -49,7 +49,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "Main Ship - Base - Full health.png"
+					"textureName": "Texture/Main Ship - Base - Full health.png"
 				},	
 				{
 					"type": "Box2dPhysComp",
@@ -82,7 +82,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "Main Ship - Engines - Base Engine.png"
+					"textureName": "Texture/Main Ship - Engines - Base Engine.png"
 				},
 				{
 					"type": "Box2dPhysComp",
@@ -115,7 +115,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "Main Ship - Engines - Burst Engine.png"
+					"textureName": "Texture/Main Ship - Engines - Burst Engine.png"
 				},
 				{
 					"type": "Box2dPhysComp",
@@ -148,7 +148,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "Main Ship - Engines - Big Pulse Engine.png"
+					"textureName": "Texture/Main Ship - Engines - Big Pulse Engine.png"
 				},
 				{
 					"type": "Box2dPhysComp",
@@ -181,7 +181,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "Main Ship - Engines - Big Pulse Engine.png"
+					"textureName": "Texture/Main Ship - Engines - Big Pulse Engine.png"
 				},
 				{
 					"type": "Box2dPhysComp",
@@ -214,7 +214,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "Main Ship - Engines - Supercharged Engine.png"
+					"textureName": "Texture/Main Ship - Engines - Supercharged Engine.png"
 				},
 				{
 					"type": "Box2dPhysComp",
@@ -246,7 +246,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "New Piskel-1.png.png"
+					"textureName": "Texture/New Piskel-1.png.png"
 				},
 				{
 					"type": "Box2dPhysComp",
@@ -279,7 +279,7 @@
 			"components": [
 				{
 					"type": "Sprite",
-					"textureName": "New Piskel-1.png.png"
+					"textureName": "Texture/New Piskel-1.png.png"
 				},
 				{
 					"type": "Box2dPhysComp",

@@ -79,12 +79,45 @@ namespace Twili
 
 
 	}
+	void Renderer::DrawTexture(Texture* texture, const Rect& source, const Transform& transform)
+	{
+		mat3 mx = transform.Getmatrix();
+
+		vec2 pos = mx.GetTranslation();
+		vec2 size = vec2{source.w, source.h} *mx.GetScale();
+
+		SDL_Rect dest;
+		dest.x = (int)(pos.x - (size.x * 0.5f));
+		dest.y = (int)(pos.y - (size.y * 0.5f));
+		dest.w = (int)size.x;
+		dest.h = (int)size.y;
+
+		SDL_RenderCopyEx(m_renderer, texture->m_texture, (SDL_Rect*)(&source), &dest, radiansToDegrees(mx.GetRotation()), nullptr, SDL_FLIP_NONE);
+
+	}
+	void Renderer::DrawTexture(Texture* texture, const Rect& source, const Transform& transform, const vec2& origin, bool flipH)
+	{
+		mat3 mx = transform.Getmatrix();
+
+		vec2 pos = mx.GetTranslation();
+		vec2 size = vec2{ source.w, source.h } *mx.GetScale();
+
+		SDL_Rect dest;
+		dest.x = (int)(pos.x - (size.x * origin.x));
+		dest.y = (int)(pos.y - (size.y * origin.y));
+		dest.w = (int)size.x;
+		dest.h = (int)size.y;
+
+		SDL_Point center{ (int)(size.x * origin.x),(int)(size.y * origin.y)};
+
+		SDL_RenderCopyEx(m_renderer, texture->m_texture, (SDL_Rect*)(&source), &dest, radiansToDegrees(mx.GetRotation()), &center, (flipH)? SDL_FLIP_HORIZONTAL:SDL_FLIP_NONE);
+	}
 	void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
 	{
 		vec2 size = texture->GetSize();
 		SDL_Rect dest;
-		dest.x = (int)x - size.x * 0.5f;
-		dest.y = (int)y - size.y * 0.5f;
+		dest.x = (int)(x - size.x * 0.5f);
+		dest.y = (int)(y - size.y * 0.5f);
 		dest.w = (int)size.x;
 		dest.h = (int)size.y;
 			// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx

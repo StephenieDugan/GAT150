@@ -16,8 +16,8 @@ namespace Twili
     {
 
         //Create Font/text Objects
-        font = GET_RESOURCE(Font, "arcadeclassic.ttf", 24);
-        font2 = GET_RESOURCE(Font, "ThaleahFat.ttf", 80);
+        font = GET_RESOURCE(Font, "Fonts/arcadeclassic.ttf", 24);
+        font2 = GET_RESOURCE(Font, "Fonts/ThaleahFat.ttf", 80);
 
         m_Scoretext = std::make_unique<Text>(font);
         m_Scoretext->Create(g_rend, "Score 0000", Twili::Color{ 1, 0, 1, 1 });
@@ -26,12 +26,12 @@ namespace Twili
         m_Livestext->Create(g_rend, "Lives:", Twili::Color{ 1, 0, 1, 1 });
 
 
-        auto Title = INSTANTIATE(Actor, "Title");
+       /* auto Title = INSTANTIATE(Actor, "Title");
         Title->transform = { Title->transform.position, Title->transform.rotation, 6 };
         Title->m_game = this;
 
         Title->Init();
-        m_scene->Add(std::move(Title));
+        m_scene->Add(std::move(Title));*/
 
 
         m_Titletext = std::make_unique<Twili::Text>(font2);
@@ -58,12 +58,12 @@ namespace Twili
         m_Winnertext = std::make_unique<Twili::Text>(font2);
         m_Winnertext->Create(Twili::g_rend, "You Won!!", Twili::Color{ 1, 1, 1, 1 });
 
-        Twili::g_noise.AddAudio("Jump", "Jump.wav");
+        Twili::g_noise.AddAudio("Jump", "Audio/Jump.wav");
         Twili::g_noise.AddAudio("MakeItPop", "MakeItPop.wav");
 
 
         m_scene = std::make_unique<Twili::Scene>();
-        m_scene->Load("scene/SpaceScene.json");
+        m_scene->Load("Scene/SpaceScene.json");
         m_scene->Init();
         //m_scene->
 
@@ -362,7 +362,7 @@ namespace Twili
         }
         if (m_state == eState::Level1)
         {
-            m_scene->getActorByName("Title")->active = false;
+            //m_scene->getActorByName("Title")->active = false;
             m_Scoretext->Draw(r, 40, 20);
             m_Livestext->Draw(r, 680, 20);
             m_Level1text->Draw(r, 400, 20);

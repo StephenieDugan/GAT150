@@ -52,6 +52,12 @@
     <ClCompile Include="Conponent\Box2dCollisionComp.cpp">
       <Filter>Source Files\Conponent</Filter>
     </ClCompile>
+    <ClCompile Include="Conponent\AnimateComp.cpp">
+      <Filter>Source Files\Conponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Conponent\TilemapComp.cpp">
+      <Filter>Source Files\Conponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -121,6 +127,12 @@
       <Filter>Source Files\Conponent</Filter>
     </ClInclude>
     <ClInclude Include="Conponent\Box2dCollisionComp.h">
+      <Filter>Source Files\Conponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Conponent\AnimateComp.h">
+      <Filter>Source Files\Conponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Conponent\TilemapComp.h">
       <Filter>Source Files\Conponent</Filter>
     </ClInclude>
   </ItemGroup>

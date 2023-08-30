@@ -11,6 +11,7 @@
 #include "Conponent/Physics.h"
 #include "Conponent/RenderComponent.h"
 #include "Conponent/Sprite.h"
+#include "Conponent/AnimateComp.h"
 
 #include "CollisionComp.h"
 #include "CircleCollisionComp.h"

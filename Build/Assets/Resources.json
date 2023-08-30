@@ -28,7 +28,7 @@
 			"components": [
 				{
 					"type": "TextRendComp",
-					"fontName": "ThaleahFat.ttf",
+					"fontName": "Fonts/ArcadeClassic.ttf",
 					"fontSize": 24,
 					"text": "ASTEROIDZ"
 				}

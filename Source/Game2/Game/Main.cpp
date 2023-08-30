@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 
 	Twili::MemoryTracker::Initialize();
 	Twili::seedRandom((unsigned)time(nullptr));
-	Twili::setFilePath("assets");
+	Twili::setFilePath("Assets/SpaceGame");
 
 	Twili::g_rend.Init(); Twili::g_rend.CreateWindow("CSC196", 800, 600);
 

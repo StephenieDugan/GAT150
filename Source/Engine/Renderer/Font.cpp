@@ -18,7 +18,7 @@ Twili::Font::~Font()
 bool Twili::Font::Load(const std::string& filename, int fontSize)
 {
 	m_ttfFont = TTF_OpenFont(filename.c_str(), fontSize);
-	if (m_ttfFont = nullptr)
+	if (m_ttfFont == nullptr)
 	{
 		WARNING_LOG("failed to open font:" << filename);
 		return false;

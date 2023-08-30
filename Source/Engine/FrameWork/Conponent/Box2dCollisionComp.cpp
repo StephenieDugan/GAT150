@@ -1,5 +1,6 @@
 #include "Box2DCollisionComp.h"
 #include "Box2DPhysComp.h"
+#include "Sprite.h"
 #include "Framework/Actor.h"
 
 namespace Twili
@@ -11,6 +12,16 @@ namespace Twili
 		auto component = m_owner->getComponent<Box2dPhysComp>();
 		if (component)
 		{
+			auto spritecomp = m_owner->getComponent<Sprite>();
+			if (spritecomp)
+			{
+				if (data.size.x == 0 && data.size.y == 0)
+				{
+					data.size = vec2{ spritecomp->source.w, spritecomp->source.h };
+				}
+				data.offset = spritecomp->origin - vec2{ 0.5f,0.5f };
+			}
+
 			data.size = data.size * scaleOffset * m_owner->transform.scale;
 
 			if (component->m_body->GetType() == b2_staticBody)

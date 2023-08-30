@@ -32,7 +32,8 @@ namespace Twili
 		void drawLine(float x1, float y1, float x2, float y2);
 		void drawPoint(float x, float y);
 		void DrawTexture(class Texture* texture, const Transform& transform);
-
+		void DrawTexture(class Texture* texture, const Rect& source, const Transform& transform);
+		void DrawTexture(class Texture* texture, const Rect& source, const Transform& transform, const vec2& origin, bool flipH);
 		void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
 
 		int getWidth() const { return m_width; };

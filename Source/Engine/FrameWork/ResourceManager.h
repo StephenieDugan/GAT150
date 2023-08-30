@@ -36,7 +36,6 @@ namespace Twili
 			return res_t<T>();
 		
 		}	
-		resource->Create(filename, args...);
 		m_resources[filename] = resource;
 
 		return resource;
