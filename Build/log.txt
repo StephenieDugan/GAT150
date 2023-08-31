@@ -14,5 +14,6 @@ INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Y
 INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(87)Prototype Class registered: Crate
 INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(87)Prototype Class registered: tile01
 INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(87)Prototype Class registered: tile02
+INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Factory.h(87)Prototype Class registered: tile03
 INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Event\EventManager.cpp(16)Event subcribed: AddPoints
 INFO: C:\Users\Stephenie\OneDrive - Neumont College of Computer Science\Second Year\C++2\GAT150\Source\Engine\FrameWork\Event\EventManager.cpp(16)Event subcribed: onPlayerDeath

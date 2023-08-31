@@ -24,12 +24,11 @@ namespace Twili
 		void setLives(int lives) { m_lives = lives; };
 
 		std::unique_ptr<Scene> m_scene;
-
+int m_lives = 0;
 	protected:
 		
-
 		int m_score = 0;
-		int m_lives = 0;
+		
 
 	};
 }

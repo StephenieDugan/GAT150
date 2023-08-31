@@ -37,12 +37,12 @@ namespace Twili
 
 	void Enemy::onCollisionEnter(Actor* other)
 	{
-		if (other->tag == "EnemyFire")
+		if (other->tag == "Player")
 		{
 			std::cout << "boop";
 
-			Twili::EventManager::Instance().DispatchEvent("onPlayerDeath", 0);
-			destroyed = true;
+			Twili::EventManager::Instance().DispatchEvent("AddPoints", 100);
+			//destroyed = true;
 
 		}
 	}
