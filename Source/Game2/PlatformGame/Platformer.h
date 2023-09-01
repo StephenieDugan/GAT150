@@ -18,6 +18,8 @@ namespace Twili
 			StartGame,
 			StartLevel,
 			Level1,
+			PlayerDeadStart,
+			PlayerDead,
 			GameOverStart,
 			GameOver,
 			WinnerStart,

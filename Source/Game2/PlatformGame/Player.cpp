@@ -67,25 +67,32 @@ namespace Twili
 		{
 			std::cout << "boop";
 			
-			//Twili::EventManager::Instance().DispatchEvent("onPlayerDeath", 0);
-			//destroyed = true;
+			Twili::EventManager::Instance().DispatchEvent("onPlayerDeath", 0);
+			destroyed = true;
 
 		}
-		//pull crate
-		if (other->tag == "Crate")
+
+		if (other->tag == "Coin")
 		{
-			if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_W))
-			{
-				m_spriteComp->SetSequence("meow");
-
-				float dir = 0;
-				if (Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_A)) dir = -1;
-				if (Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_D)) dir = 1;
-
-				transform.position = (dir == -1) ? vec2{ transform.position.x + 50.0f, transform.position.y } : vec2{ transform.position.x - 50.0f, transform.position.y };
-				other->transform.position = (dir == -1) ? vec2{ other->transform.position.x + 50.0f, other->transform.position.y } : vec2{ other->transform.position.x - 50.0f, other->transform.position.y };
-			}
+			std::cout << "bleep";
+			Twili::EventManager::Instance().DispatchEvent("AddPoints", 2);
+			other->destroyed = true;
 		}
+		////pull crate
+		//if (other->tag == "Crate")
+		//{
+		//	if (Twili::g_inputSys.GetKeyDown(SDL_SCANCODE_W))
+		//	{
+		//		m_spriteComp->SetSequence("meow");
+
+		//		float dir = 0;
+		//		if (Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_A)) dir = -1;
+		//		if (Twili::g_inputSys.GetPreviousKeyDown(SDL_SCANCODE_D)) dir = 1;
+
+		//		transform.position = (dir == -1) ? vec2{ transform.position.x + 50.0f, transform.position.y } : vec2{ transform.position.x - 50.0f, transform.position.y };
+		//		other->transform.position = (dir == -1) ? vec2{ other->transform.position.x + 50.0f, other->transform.position.y } : vec2{ other->transform.position.x - 50.0f, other->transform.position.y };
+		//	}
+		//}
 
 		if (other->tag == "Ground") groundCount++;
 	}

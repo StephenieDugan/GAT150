@@ -25,6 +25,7 @@
     {
       "type": "Actor",
       "name": "Coin",
+      "tag": "Coin",
       "persistent": true,
       "transform": {
         "position": [
@@ -59,7 +60,7 @@
       "transform": {
         "position": [
           1550,
-          100
+          150
         ],
         "scale": 0.5,
         "rotation": 0
@@ -67,64 +68,38 @@
       "components": [
         {
           "type": "AnimateComp",
-          "defaultSequence": "full",
+          "defaultSequenceName": "full",
           "sequences": [
             {
               "name": "full",
-              "fps": 12,
-              "numColumns": 1,
-              "numRows": 6,
+              "fps": 0,
+              "numColumns": 3,
+              "numRows": 1,
               "startFrame": 1,
-              "endFrame": 1,
-              "textureName": "Texture/Healthbar.jpg"
+              "endFrame": 3,
+              "textureName": "Texture/HeartBar.png"
             },
             {
               "name": "Minus1Life",
-              "fps": 12,
-              "numColumns": 1,
-              "numRows": 6,
+              "fps": 0,
+              "numColumns": 3,
+              "numRows": 1,
               "startFrame": 2,
               "endFrame": 2,
-              "textureName": "Texture/Healthbar.jpg"
+              "textureName": "Texture/HeartBar.png"
             },
             {
               "name": "Minus2Life",
-              "fps": 12,
-              "numColumns": 1,
-              "numRows": 6,
+              "fps": 0,
+              "numColumns": 3,
+              "numRows": 1,
               "startFrame": 3,
               "endFrame": 3,
-              "textureName": "Texture/Healthbar.jpg"
-            },
-            {
-              "name": "Minus3Life",
-              "fps": 12,
-              "numColumns": 1,
-              "numRows": 6,
-              "startFrame": 4,
-              "endFrame": 4,
-              "textureName": "Texture/Healthbar.jpg"
-            },
-            {
-              "name": "Minus4Life",
-              "fps": 12,
-              "numColumns": 1,
-              "numRows": 6,
-              "startFrame": 5,
-              "endFrame": 5,
-              "textureName": "Texture/Healthbar.jpg"
-            },
-            {
-              "name": "Minus5Life",
-              "fps": 12,
-              "numColumns": 1,
-              "numRows": 6,
-              "startFrame": 6,
-              "endFrame": 6,
-              "textureName": "Texture/Healthbar.jpg"
+              "textureName": "Texture/HeartBar.png"
             }
           ]
         }
+
       ]
     },
     {
@@ -306,7 +281,7 @@
       "type": "Enemy",
       "name": "Enemy",
       "persistent": true,
-      "speed": 5,
+      "speed": 1,
       "jump": 3,
       "tag": "Enemy",
       "transform": {
@@ -338,8 +313,6 @@
           "damping": 0.9,
           "gravityScale": 0,
           "constrainAngle": true
-
-
         },
         {
           "type": "Box2dCollisionComp",
@@ -365,11 +338,11 @@
           "type": "TextRendComp",
           "fontName": "Fonts/ArcadeClassic.ttf",
           "fontSize": 14,
-          "text": "Danger Bros",
+          "text": "Cave of Coins!",
           "color": [
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
             1
           ]
         }
@@ -377,23 +350,80 @@
     },
     {
       "type": "Actor",
-      "tag": "Ground",
+      "name": "Game Over",
+      "persistent": true,
       "transform": {
         "position": [
-          900,
-          900
-        ]
+          975,
+          400
+        ],
+        "scale": 9,
+        "rotation": 0
       },
       "components": [
         {
-          "type": "Box2dPhysComp",
-          "isDynamic": false
-        },
+          "type": "TextRendComp",
+          "fontName": "Fonts/ArcadeClassic.ttf",
+          "fontSize": 14,
+          "text": "Game Over",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Winner",
+      "persistent": true,
+      "transform": {
+        "position": [
+          975,
+          400
+        ],
+        "scale": 9,
+        "rotation": 0
+      },
+      "components": [
         {
-          "type": "Box2dCollisionComp",
-          "size": [
-            1600,
-            50
+          "type": "TextRendComp",
+          "fontName": "Fonts/ArcadeClassic.ttf",
+          "fontSize": 14,
+          "text": "You Win!!",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Score",
+      "persistent": true,
+      "transform": {
+        "position": [
+          475,
+          150
+        ],
+        "scale": 9,
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "TextRendComp",
+          "fontName": "Fonts/ArcadeClassic.ttf",
+          "fontSize": 14,
+          "color": [
+            1,
+            1,
+            1,
+            1
           ]
         }
       ]

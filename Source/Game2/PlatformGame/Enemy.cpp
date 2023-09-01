@@ -42,7 +42,7 @@ namespace Twili
 			std::cout << "boop";
 
 			Twili::EventManager::Instance().DispatchEvent("AddPoints", 100);
-			//destroyed = true;
+			destroyed = true;
 
 		}
 	}
